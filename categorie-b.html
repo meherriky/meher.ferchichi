@@ -1,151 +1,58 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>Certifications - Meher Ferchichi</title>
-    <style>
-        body { font-family: 'Segoe UI', sans-serif; background: #f0f2f5; margin: 0; padding: 0; }
+<section style="padding: 40px; background: #ffffff; max-width: 1200px; margin: auto;">
+    
+    <header style="border-bottom: 3px solid #003366; padding-bottom: 20px; margin-bottom: 40px;">
+        <h2 style="color: #003366; font-size: 2.5rem; margin: 0; font-weight: 800;">Certifications & Accreditations</h2>
+        <p style="color: #006400; font-size: 1.1rem; font-weight: 600; margin-top: 5px;">International expertise in Media Governance and Digital Innovation</p>
+    </header>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px;">
         
-        /* --- GRILLE DES CERTIFICATS --- */
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            padding: 40px;
-            max-width: 1200px;
-            margin: auto;
-        }
+        <div class="cert-card" onclick="ouvrirZoom('certif-asbu.jpg', 'ASBU Academy', 'Description complète : Expertise in AI Integration...')" style="position: relative; height: 200px; background: #00122e; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); cursor: pointer;">
+            <img src="certif-asbu.jpg" style="width: 100%; height: 100%; object-fit: cover;">
+            <div class="overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 51, 102, 0.9); color: white; display: flex; align-items: center; justify-content: center; text-align: center; padding: 20px; opacity: 0; transition: 0.4s ease; transform: translateY(100%);">
+                <p><strong>ASBU Academy</strong><br>Click to expand</p>
+            </div>
+        </div>
 
-        .cert-card {
-            position: relative;
-            height: 220px;
-            background: #00122e;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
+        <div class="cert-card" onclick="ouvrirZoom('certif-ebu.jpg', 'EBU Academy', 'Description complète : Digital Transformation strategy...')" style="position: relative; height: 200px; background: #00122e; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); cursor: pointer;">
+            <img src="certif-ebu.jpg" style="width: 100%; height: 100%; object-fit: cover;">
+            <div class="overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 51, 102, 0.9); color: white; display: flex; align-items: center; justify-content: center; text-align: center; padding: 20px; opacity: 0; transition: 0.4s ease; transform: translateY(100%);">
+                <p><strong>EBU Academy</strong><br>Click to expand</p>
+            </div>
+        </div>
 
-        .cert-card:hover { transform: scale(1.03); }
+        </div>
 
-        .cert-card img { width: 100%; height: 100%; object-fit: cover; }
+    <div id="zoneZoom" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); z-index:2000; align-items:center; justify-content:center; padding:20px;">
+        <span onclick="fermerZoom()" style="position:absolute; top:20px; right:30px; color:white; font-size:40px; cursor:pointer;">&times;</span>
+        
+        <div style="display:flex; background:white; max-width:1100px; width:100%; max-height:90vh; border-radius:10px; overflow:hidden;">
+            <div style="flex:1; background:#111; display:flex; align-items:center; justify-content:center; padding:10px;">
+                <img id="imgZoom" src="" style="max-width:100%; max-height:80vh; object-fit:contain;">
+            </div>
+            <div style="flex:1; padding:30px; color:#333; overflow-y:auto;">
+                <h2 id="titreZoom" style="color:#003366;"></h2>
+                <hr style="border:0; border-top:1px solid #eee; margin:15px 0;">
+                <p id="texteZoom" style="font-size:1.1rem; line-height:1.6;"></p>
+                <button onclick="fermerZoom()" style="margin-top:20px; padding:10px 20px; background:#CC0000; color:white; border:none; border-radius:5px; cursor:pointer;">Close</button>
+            </div>
+        </div>
+    </div>
 
-        /* Effet au survol (Overlay) */
-        .overlay {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 51, 102, 0.85);
-            color: white; display: flex; align-items: center; justify-content: center;
-            text-align: center; padding: 20px; opacity: 0; transition: 0.3s;
-        }
-        .cert-card:hover .overlay { opacity: 1; }
-
-        /* --- LA MODALE (Fenêtre surgissante) --- */
-        .modal {
-            display: none; /* Cachée par défaut */
-            position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%;
-            background-color: rgba(0,0,0,0.9);
-            backdrop-filter: blur(5px);
-            align-items: center; justify-content: center;
-        }
-
-        .modal-content {
-            background: white;
-            width: 90%; max-width: 1100px;
-            max-height: 90vh;
-            display: flex; /* Aligne Image et Texte côte à côte */
-            border-radius: 15px; overflow: hidden;
-            animation: zoomIn 0.3s ease;
-        }
-
-        @keyframes zoomIn { from {transform: scale(0.7); opacity: 0;} to {transform: scale(1); opacity: 1;} }
-
-        /* Adaptation automatique Image Portrait/Paysage */
-        .modal-image-container {
-            flex: 1; background: #222;
-            display: flex; align-items: center; justify-content: center;
-            padding: 20px;
-        }
-
-        .modal-image-container img {
-            max-width: 100%; max-height: 80vh;
-            object-fit: contain; /* Garde les proportions A4 ou Paysage */
-            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-        }
-
-        .modal-text {
-            flex: 1; padding: 40px;
-            display: flex; flex-direction: column; justify-content: center;
-        }
-
-        .modal-text h2 { color: #003366; margin-top: 0; }
-        .modal-text p { color: #333; line-height: 1.6; font-size: 1.1rem; }
-
-        .close-btn {
-            position: absolute; top: 20px; right: 30px;
-            color: white; font-size: 40px; font-weight: bold; cursor: pointer;
-        }
-
-        /* Responsive : Texte sous l'image sur petit écran */
-        @media (max-width: 800px) {
-            .modal-content { flex-direction: column; overflow-y: auto; }
-            .modal-text { padding: 20px; }
-        }
+    <style>
+        .cert-card:hover .overlay { opacity: 1 !important; transform: translateY(0) !important; }
     </style>
-</head>
-<body>
-
-    <div style="text-align:center; padding-top:40px;">
-        <h1 style="color:#003366;">Certifications & Accreditations</h1>
-        <a href="index.html" style="text-decoration:none; color:#006400; font-weight:bold;">← Retour à l'accueil</a>
-    </div>
-
-    <div class="grid-container">
-        <div class="cert-card" onclick="openModal('Benevolat ONU.jpeg', 'ONU UIT', 'Web Editor - Arabic Platform | WSIS (ITU/UN Specialized Agency). My journey in digital media began at the 2005 World Summit on the Information Society (WSIS). Serving as a Web Editor for the official Arabic website, I gained my first deep-dive experience into digital storytelling and real-time reporting under the auspices of the International Telecommunication Union (ITU). This foundational role sparked my passion for using digital platforms to bridge the gap between complex information and global audiences.')">
-            <img src="Benevolat ONU.jpeg" alt="ONU UIT">
-            <div class="overlay">Cliquez pour voir les détails</div>
-        </div>
-
-        <div class="cert-card" onclick="openModal('certif-ebu.jpg', 'EBU Academy', 'Digital Transformation strategy for media leaders. Focusing on modernizing workflows and public service media values in the age of digital content.')">
-            <img src="certif-ebu.jpg" alt="EBU">
-            <div class="overlay">Cliquez pour voir les détails</div>
-        </div>
-
-        </div>
-
-    <div id="myModal" class="modal">
-        <span class="close-btn" onclick="closeModal()">&times;</span>
-        <div class="modal-content">
-            <div class="modal-image-container">
-                <img id="imgFull" src="" alt="">
-            </div>
-            <div class="modal-text">
-                <h2 id="titleFull"></h2>
-                <p id="descFull"></p>
-                <button onclick="closeModal()" style="margin-top:20px; padding:10px; background:#003366; color:white; border:none; border-radius:5px; cursor:pointer;">Fermer</button>
-            </div>
-        </div>
-    </div>
 
     <script>
-        function openModal(imgSrc, title, desc) {
-            document.getElementById('myModal').style.display = "flex";
-            document.getElementById('imgFull').src = imgSrc;
-            document.getElementById('titleFull').innerText = title;
-            document.getElementById('descFull').innerText = desc;
+        function ouvrirZoom(source, titre, texte) {
+            document.getElementById('zoneZoom').style.display = "flex";
+            document.getElementById('imgZoom').src = source;
+            document.getElementById('titreZoom').innerText = titre;
+            document.getElementById('texteZoom').innerText = texte;
         }
-
-        function closeModal() {
-            document.getElementById('myModal').style.display = "none";
-        }
-
-        // Fermer si on clique en dehors de la fenêtre blanche
-        window.onclick = function(event) {
-            if (event.target == document.getElementById('myModal')) {
-                closeModal();
-            }
+        function fermerZoom() {
+            document.getElementById('zoneZoom').style.display = "none";
         }
     </script>
 
-</body>
-</html>
+</section>
