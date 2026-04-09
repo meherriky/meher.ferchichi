@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PRODUCTIONS AI - Grande Photo</title>
+    <title>MEHER FERCHICHI - Grande Photo</title>
     <style>
         /* --- RESET BASE (Pour éviter les bugs) --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -21,7 +21,7 @@
             height: 400px; /* Hauteur de la grande photo */
             
             /* --- 1. AJOUTEZ VOTRE PHOTO ICI --- */
-            background-image: url('ma-grande-photo.jpg'); /* NOM DE VOTRE FICHIER IMAGE */
+            background-image: url('image profil.png'); /* NOM DE VOTRE FICHIER IMAGE */
             
             /* Configuration de l'image */
             background-size: cover; /* Couvre tout l'espace */
@@ -91,20 +91,85 @@
 </head>
 <body>
 
-    <div class="grande-photo-banner">
-        <h1 class="nom-famille">VOTRE NOM ICI</h1>
-        <p class="profession">VOTRE PROFESSION</p>
+     <div class="grande-photo-banner">
+        <h1 class="nom-famille">    MEHER FERCHICHI</h1>
+        <p class="profession">  DIGITAL CONTENT STRATEGIST</p>
     </div>
 
     <nav>
-        <a href="index.html">Accueil</a>
-        <a href="categorie-f.html">Catégorie A</a>
+       <nav>
+        <a href="index.html">ACCEUIL</a>
+        <a href="categorie-a.html">BIOGRAPHIE</a>
+        <a href="categorie-b.html">CERTIFICAT</a>
+        <a href="categorie-c.html">ALBUM</a>
+        <a href="categorie-d.html">AUDIO PRODUCTION</a>
+        <a href="categorie-e.html">VIDEO PRODUCTION</a>
+        <a href="categorie-f.html">AI VIDEO PRODUCTION</a>
         <a href="admin.html">Admin</a>
     </nav>
 
     <main class="main-container">
-        <h2>Bienvenue</h2>
-        <p>Le design actuel utilise une grande photo d'arrière-plan qui occupe tout l'espace du bandeau. Ses contours sont adoucis par un flou blanc progressif.</p>
+       <section style="padding: 40px; background: #ffffff; max-width: 1200px; margin: auto;">
+    
+    <header style="border-bottom: 3px solid #003366; padding-bottom: 20px; margin-bottom: 40px;">
+        <h2 style="color: #003366; font-size: 2.5rem; margin: 0; font-weight: 800;">Certifications & Accreditations</h2>
+        <p style="color: #006400; font-size: 1.1rem; font-weight: 600; margin-top: 5px;">International expertise in Media Governance and Digital Innovation</p>
+    </header>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px;">
+        
+        <div class="cert-card" style="position: relative; height: 200px; background: #00122e; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); cursor: pointer;">
+            <img src="certif-asbu.jpg" alt="ASBU Certification" style="width: 100%; height: 100%; object-fit: cover;">
+            
+            <div class="overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 51, 102, 0.9); color: white; display: flex; align-items: center; justify-content: center; text-align: center; padding: 20px; opacity: 0; transition: 0.4s ease; transform: translateY(100%);">
+                <p style="font-size: 0.95rem; line-height: 1.4;">
+                    <strong>ASBU Academy</strong><br>
+                    AI Integration in News Quality Standards & Information Verification.
+                </p>
+            </div>
+        </div>
+
+        <div class="cert-card" style="position: relative; height: 200px; background: #00122e; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); cursor: pointer;">
+            <img src="certif-ebu.jpg" alt="EBU Academy" style="width: 100%; height: 100%; object-fit: cover;">
+            <div class="overlay">
+                <p style="font-size: 0.95rem;">
+                    <strong>EBU Academy</strong><br>
+                    Digital Transformation & Public Service Media Strategy.
+                </p>
+            </div>
+        </div>
+
+        <div class="cert-card" style="position: relative; height: 200px; background: #00122e; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); cursor: pointer;">
+            <img src="certif-dcaf.jpg" alt="DCAF Geneva" style="width: 100%; height: 100%; object-fit: cover;">
+            <div class="overlay">
+                <p style="font-size: 0.95rem;">
+                    <strong>DCAF Geneva</strong><br>
+                    Media Law and Regulatory Compliance in Global Governance.
+                </p>
+            </div>
+        </div>
+
+        <div class="cert-card" style="position: relative; height: 200px; background: #00122e; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); cursor: pointer;">
+            <img src="certif-dw.jpg" alt="Deutsche Welle" style="width: 100%; height: 100%; object-fit: cover;">
+            <div class="overlay">
+                <p style="font-size: 0.95rem;">
+                    <strong>Deutsche Welle (DW)</strong><br>
+                    Data Journalism & Advanced Information Visualization.
+                </p>
+            </div>
+        </div>
+
+        </div>
+
+    <style>
+        /* Animation pour faire apparaître le texte au survol */
+        .cert-card:hover .overlay {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+        }
+    </style>
+
+</section>
     </main>
 
 </body>
