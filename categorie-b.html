@@ -3,174 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MEHER FERCHICHI - Grande Photo</title>
+    <title>CERTIFICATS - MEHER FERCHICHI</title>
     <style>
-        /* --- RESET BASE (Pour éviter les bugs) --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background-color: #f0f2f5; /* Fond clair pour faire ressortir le flou blanc */
-            color: #333;
-            line-height: 1.6;
-        }
+        body { font-family: 'Segoe UI', sans-serif; background-color: #f0f2f5; color: #333; line-height: 1.6; }
 
-        /* --- LE GRAND BANDEAU AVEC LA GRANDE PHOTO --- */
+        /* --- BANDEAU PHOTO (Identique à l'accueil) --- */
         .grande-photo-banner {
-            width: 100%;
-            height: 400px; /* Hauteur de la grande photo */
-            
-            /* --- 1. AJOUTEZ VOTRE PHOTO ICI --- */
-            background-image: url('image profil.png'); /* NOM DE VOTRE FICHIER IMAGE */
-            
-            /* Configuration de l'image */
-            background-size: cover; /* Couvre tout l'espace */
-            background-position: center; /* Centre l'image */
-            background-repeat: no-repeat;
-            
-            /* --- 2. L'EFFET DE CONTOURS FLOUS BLANCS --- */
-            /* Une ombre interne blanche très large et floue */
-            box-shadow: inset 0 0 80px 40px rgba(255, 255, 255, 1); 
-            
-            /* Ajout d'un masque de bordure pour adoucir encore plus */
-            -webkit-mask-image: radial-gradient(circle, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
-            mask-image: radial-gradient(circle, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
-
-            /* Alignement du texte au centre */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: white; /* Texte en blanc sur la photo */
+            width: 100%; height: 300px;
+            background-image: url('image-profil.png');
+            background-size: cover; background-position: center;
+            box-shadow: inset 0 0 80px 40px rgba(255, 255, 255, 1);
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
             text-align: center;
         }
 
-        /* --- TEXTE SUR LA PHOTO --- */
-        .nom-famille {
-            font-size: 3.5rem;
-            font-weight: bold;
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.5); /* Ombre pour la lisibilité */
-            margin: 0;
-        }
+        /* --- NAVIGATION (LE MENU QUE TU VEUX GARDER) --- */
+        nav { background-color: #333; padding: 15px; text-align: center; }
+        nav a { color: white; text-decoration: none; margin: 0 15px; font-weight: bold; }
+        nav a:hover { color: #00d1ff; }
 
-        .profession {
-            font-size: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 5px;
-            text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
-            margin-top: 10px;
-        }
+        /* --- CONTENEUR PRINCIPAL --- */
+        .main-container { max-width: 1200px; margin: 40px auto; padding: 20px; background: white; border-radius: 8px; }
 
-        /* --- NAVIGATION --- */
-        nav {
-            background-color: #333;
-            padding: 15px;
-            text-align: center;
+        /* --- GRILLE DES CERTIFICATS --- */
+        .grid-certifs { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; margin-top: 30px; }
+        
+        .cert-card {
+            position: relative; height: 200px; background: #00122e; border-radius: 10px;
+            overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); cursor: pointer;
         }
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 15px;
-            font-weight: bold;
-        }
-        nav a:hover {
-            color: #ccc;
-        }
+        .cert-card img { width: 100%; height: 100%; object-fit: cover; }
 
-        /* --- CONTENU --- */
-        .main-container {
-            max-width: 1000px;
-            margin: 40px auto;
-            padding: 20px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        /* EFFET SURVOL (OVERLAY) */
+        .overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 51, 102, 0.9); color: white;
+            display: flex; align-items: center; justify-content: center; text-align: center;
+            padding: 20px; opacity: 0; transition: 0.4s ease; transform: translateY(100%);
         }
+        .cert-card:hover .overlay { opacity: 1; transform: translateY(0); }
 
+        /* --- SYSTÈME DE ZOOM (MODALE) --- */
+        #zoneZoom {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9); z-index: 2000; align-items: center; justify-content: center; padding: 20px;
+        }
+        .modal-box {
+            display: flex; background: white; max-width: 1000px; width: 100%; 
+            max-height: 85vh; border-radius: 10px; overflow: hidden;
+        }
+        .modal-img-side { flex: 1; background: #111; display: flex; align-items: center; justify-content: center; }
+        .modal-img-side img { max-width: 100%; max-height: 80vh; object-fit: contain; }
+        .modal-text-side { flex: 1; padding: 30px; overflow-y: auto; }
+
+        @media (max-width: 800px) { .modal-box { flex-direction: column; } }
     </style>
 </head>
 <body>
 
     <div class="grande-photo-banner">
-        <h1 class="nom-famille">    MEHER FERCHICHI</h1>
-        <p class="profession">  DIGITAL CONTENT STRATEGIST</p>
+        <h1 style="font-size: 2.5rem; color: #003366; text-shadow: 1px 1px 5px white;">MEHER FERCHICHI</h1>
     </div>
 
     <nav>
-       <nav>
-        <a href="index.html">ACCEUIL</a>
+        <a href="index.html">ACCUEIL</a>
         <a href="categorie-a.html">BIOGRAPHIE</a>
         <a href="categorie-b.html">CERTIFICAT</a>
         <a href="categorie-c.html">ALBUM</a>
-        <a href="categorie-d.html">AUDIO PRODUCTION</a>
-        <a href="categorie-e.html">VIDEO PRODUCTION</a>
-        <a href="categorie-f.html">AI VIDEO PRODUCTION</a>
+        <a href="categorie-d.html">AUDIO</a>
+        <a href="categorie-e.html">VIDEO</a>
         <a href="admin.html">Admin</a>
     </nav>
 
-<section style="padding: 40px; background: #ffffff; max-width: 1200px; margin: auto;">
-    
-    <header style="border-bottom: 3px solid #003366; padding-bottom: 20px; margin-bottom: 40px;">
-        <h2 style="color: #003366; font-size: 2.5rem; margin: 0; font-weight: 800;">Certifications & Accreditations</h2>
-        <p style="color: #006400; font-size: 1.1rem; font-weight: 600; margin-top: 5px;">International expertise in Media Governance and Digital Innovation</p>
-    </header>
-
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px;">
+    <main class="main-container">
+        <h2 style="color: #003366; border-bottom: 2px solid #003366; padding-bottom: 10px;">Mes Certifications</h2>
         
-        <div class="cert-card" onclick="ouvrirZoom('Benevolat ONU.jpeg', 'ONU UIT CERTEFICAT - 2005 ', ' My journey in digital media began at the 2005 World Summit on the Information Society (WSIS). Serving as a Web Editor for the official Arabic website, I gained my first deep-dive experience into digital storytelling and real-time reporting under the auspices of the International Telecommunication Union (ITU). This foundational role sparked my passion for using digital platforms to bridge the gap between complex information and global audiences.')" style="position: relative; height: 200px; background: #00122e; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); cursor: pointer;">
-            <img src="Benevolat ONU.jpeg" style="width: 100%; height: 100%; object-fit: cover;">
-            <div class="overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 51, 102, 0.9); color: white; display: flex; align-items: center; justify-content: center; text-align: center; padding: 20px; opacity: 0; transition: 0.4s ease; transform: translateY(100%);">
-                <p><strong>Certificat de Contribution au Sommet Mondial sur la Société de l'Information (SMSI/UIT) 2005</strong><br>Click to expand</p>
+        <div class="grid-certifs">
+            <div class="cert-card" onclick="ouvrirZoom('certif-asbu.jpg', 'ASBU Academy', 'Expertise en intégration de l\'IA pour les standards de qualité de l\'information. Formation avancée sur la vérification des faits et l\'innovation éditoriale.')">
+                <img src="certif-asbu.jpg" alt="ASBU">
+                <div class="overlay"><p><strong>ASBU Academy</strong><br>Voir les détails</p></div>
             </div>
-        </div>
 
-        <div class="cert-card" onclick="ouvrirZoom('Benevolat ONU.jpeg', 'EBU Academy', 'Description complète : Digital Transformation strategy...')" style="position: relative; height: 200px; background: #00122e; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); cursor: pointer;">
-            <img src="certif-ebu.jpg" style="width: 100%; height: 100%; object-fit: cover;">
-            <div class="overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 51, 102, 0.9); color: white; display: flex; align-items: center; justify-content: center; text-align: center; padding: 20px; opacity: 0; transition: 0.4s ease; transform: translateY(100%);">
-                <p><strong>EBU Academy</strong><br>Click to expand</p>
+            <div class="cert-card" onclick="ouvrirZoom('certif-ebu.jpg', 'EBU Academy', 'Stratégie de transformation digitale pour les médias de service public. Certification sur les nouveaux workflows et la gouvernance des contenus.')">
+                <img src="certif-ebu.jpg" alt="EBU">
+                <div class="overlay"><p><strong>EBU Academy</strong><br>Voir les détails</p></div>
             </div>
-        </div>
+            
+            </div>
+    </main>
 
-        </div>
-
-    <div id="zoneZoom" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); z-index:2000; align-items:center; justify-content:center; padding:20px;">
+    <div id="zoneZoom">
         <span onclick="fermerZoom()" style="position:absolute; top:20px; right:30px; color:white; font-size:40px; cursor:pointer;">&times;</span>
-        
-        <div style="display:flex; background:white; max-width:1100px; width:100%; max-height:90vh; border-radius:10px; overflow:hidden;">
-            <div style="flex:1; background:#111; display:flex; align-items:center; justify-content:center; padding:10px;">
-                <img id="imgZoom" src="" style="max-width:100%; max-height:80vh; object-fit:contain;">
-            </div>
-            <div style="flex:1; padding:30px; color:#333; overflow-y:auto;">
+        <div class="modal-box">
+            <div class="modal-img-side"><img id="imgZoom" src=""></div>
+            <div class="modal-text-side">
                 <h2 id="titreZoom" style="color:#003366;"></h2>
-                <hr style="border:0; border-top:1px solid #eee; margin:15px 0;">
-                <p id="texteZoom" style="font-size:1.1rem; line-height:1.6;"></p>
-                <button onclick="fermerZoom()" style="margin-top:20px; padding:10px 20px; background:#CC0000; color:white; border:none; border-radius:5px; cursor:pointer;">Close</button>
-           </div>
-  <nav>
-        <a href="index.html">ACCEUIL</a>
-        <a href="categorie-a.html">BIOGRAPHIE</a>
-        <a href="categorie-b.html">CERTIFICAT</a>
-        <a href="categorie-c.html">ALBUM</a>
-        <a href="categorie-d.html">AUDIO PRODUCTION</a>
-        <a href="categorie-e.html">VIDEO PRODUCTION</a>
-        <a href="categorie-f.html">AI VIDEO PRODUCTION</a>
-        <a href="admin.html">Admin</a>
-    </nav>
-  
-   <style>
-        .cert-card:hover .overlay { opacity: 1 !important; transform: translateY(0) !important; }
-    </style>
+                <hr style="margin: 15px 0; border: 0; border-top: 1px solid #eee;">
+                <p id="texteZoom"></p>
+                <button onclick="fermerZoom()" style="margin-top:20px; padding:10px 20px; background:#CC0000; color:white; border:none; border-radius:5px; cursor:pointer;">Fermer</button>
+            </div>
+        </div>
+    </div>
 
     <script>
-        function ouvrirZoom(source, titre, texte) {
+        function ouvrirZoom(src, titre, texte) {
             document.getElementById('zoneZoom').style.display = "flex";
-            document.getElementById('imgZoom').src = source;
+            document.getElementById('imgZoom').src = src;
             document.getElementById('titreZoom').innerText = titre;
             document.getElementById('texteZoom').innerText = texte;
         }
-        function fermerZoom() {
-            document.getElementById('zoneZoom').style.display = "none";
-        }
+        function fermerZoom() { document.getElementById('zoneZoom').style.display = "none"; }
     </script>
 
-</section>
+</body>
+</html>
