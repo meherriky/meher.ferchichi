@@ -1,86 +1,83 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CERTIFICATES - MEHER FERCHICHI</title>
+    <title>CERTIFICATS - MEHER FERCHICHI</title>
     <style>
-        /* --- RESET & STYLE DE BASE --- */
+        /* --- STYLE DE BASE --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Segoe UI', sans-serif; background-color: #fff; color: #333; line-height: 1.8; }
 
-        /* --- BANDEAU PHOTO --- */
+        /* --- BANDEAU --- */
         .grande-photo-banner {
-            width: 100%; height: 400px;
+            width: 100%; height: 350px;
             background: #001f3f url('image profil.png') center/cover no-repeat;
             display: flex; align-items: center; justify-content: center;
             position: relative;
         }
-        .grande-photo-banner::after { content: ""; position: absolute; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.3); }
+        .grande-photo-banner::after { content: ""; position: absolute; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.4); }
         .grande-photo-banner h1 {
-            position: relative; z-index: 2; font-size: 3.5rem; color: white;
-            text-shadow: 0 5px 15px rgba(0,0,0,0.5); letter-spacing: 8px; text-transform: uppercase;
+            position: relative; z-index: 2; font-size: 3rem; color: white;
+            text-shadow: 0 5px 15px rgba(0,0,0,0.5); letter-spacing: 5px; text-transform: uppercase;
         }
 
         /* --- NAVIGATION --- */
         nav { background: #1a1a1a; padding: 20px; text-align: center; position: sticky; top: 0; z-index: 1000; border-bottom: 2px solid #00d1ff; }
-        nav a { color: rgba(255, 255, 255, 0.6); text-decoration: none; margin: 0 15px; font-weight: bold; transition: 0.3s; padding-bottom: 8px; font-size: 0.85rem; }
+        nav a { color: rgba(255, 255, 255, 0.6); text-decoration: none; margin: 0 15px; font-weight: bold; transition: 0.3s; font-size: 0.85rem; }
         nav a.active { color: #00d1ff; border-bottom: 2px solid #00d1ff; text-shadow: 0 0 8px #00d1ff; }
         nav a:hover { color: #00d1ff; }
 
-        /* --- CONTENU --- */
-        .main-container { max-width: 1100px; margin: 0 auto; padding: 60px 20px; }
-        h2.section-title { font-size: 2.2rem; color: #003366; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px; border-bottom: 2px solid #eee; padding-bottom: 10px; }
-
-        /* --- GRILLE --- */
-        .grid-certifs { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); 
-            gap: 25px; 
+        /* --- GRILLE DE CERTIFICATS --- */
+        .main-container { max-width: 1200px; margin: 0 auto; padding: 60px 20px; }
+        h2.section-title { font-size: 2rem; color: #003366; text-transform: uppercase; margin-bottom: 40px; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        
+        .grid-certifs {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
         }
 
         .cert-card {
-            position: relative; height: 200px; background: #00122e; border-radius: 10px;
-            overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); cursor: pointer;
-            transition: 0.3s ease;
+            background: #00122e; border-radius: 12px; overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1); cursor: pointer;
+            transition: 0.3s ease; position: relative; height: 220px;
         }
-        .cert-card:hover { transform: translateY(-5px); }
-        .cert-card img { width: 100%; height: 100%; object-fit: cover; }
+        .cert-card:hover { transform: translateY(-10px); }
+        .cert-card img { width: 100%; height: 100%; object-fit: cover; opacity: 0.9; }
 
         .overlay {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 51, 102, 0.9); color: white;
-            display: flex; flex-direction: column; align-items: center; justify-content: center; 
-            text-align: center; padding: 20px; opacity: 0; transition: 0.4s ease; 
-            transform: translateY(100%);
+            background: rgba(0, 51, 102, 0.85); color: white;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            text-align: center; padding: 15px; opacity: 0; transition: 0.4s; transform: translateY(100%);
         }
         .cert-card:hover .overlay { opacity: 1; transform: translateY(0); }
 
         /* --- MODALE --- */
         #zoneZoom {
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.9); z-index: 2000; align-items: center; justify-content: center; padding: 20px;
+            background: rgba(0,0,0,0.95); z-index: 2000; align-items: center; justify-content: center; padding: 20px;
         }
         .modal-box {
-            display: flex; background: white; max-width: 1000px; width: 100%; 
-            max-height: 85vh; border-radius: 12px; overflow: hidden; position: relative;
+            display: flex; background: white; max-width: 1100px; width: 100%; 
+            max-height: 90vh; border-radius: 15px; overflow: hidden; position: relative;
         }
-        .modal-img-side { flex: 1.2; background: #111; display: flex; align-items: center; justify-content: center; }
-        .modal-img-side img { max-width: 100%; max-height: 80vh; object-fit: contain; }
-        .modal-text-side { flex: 1; padding: 40px; color: #333; }
-        
-        .close-btn { position: absolute; top: 15px; right: 20px; font-size: 30px; cursor: pointer; color: #333; font-weight: bold; }
+        .modal-img-side { flex: 1.5; background: #222; display: flex; align-items: center; justify-content: center; }
+        .modal-img-side img { max-width: 100%; max-height: 85vh; object-fit: contain; }
+        .modal-text-side { flex: 1; padding: 40px; overflow-y: auto; background: #fff; }
+        .close-btn { position: absolute; top: 15px; right: 20px; font-size: 35px; cursor: pointer; color: #333; z-index: 100; }
 
-        @media (max-width: 850px) {
+        @media (max-width: 900px) {
             .modal-box { flex-direction: column; }
-            .grande-photo-banner h1 { font-size: 2.2rem; }
+            .modal-img-side { height: 400px; }
         }
     </style>
 </head>
 <body>
 
     <div class="grande-photo-banner">
-        <h1>Meher Ferchichi</h1>
+        <h1>Certifications</h1>
     </div>
 
     <nav>
@@ -94,17 +91,35 @@
     </nav>
 
     <main class="main-container">
-        <h2 class="section-title">Certifications</h2>
+        <h2 class="section-title">Accréditations Professionnelles</h2>
         
         <div class="grid-certifs">
-            <div class="cert-card" onclick="ouvrirZoom('certif-asbu.jpg', 'ASBU Academy', 'AI in News Quality Service and Verification.')">
-                <img src="certif-asbu.jpg" alt="ASBU">
-                <div class="overlay"><strong>ASBU Academy</strong></div>
+            
+            <div class="cert-card" onclick="ouvrirZoom('Benevolat ONU.jpeg', 'UIT - Nations Unies', 'Certificat d\'Assistant pour le Sommet Mondial sur la Société de l\'Information (Tunis 2005). Engagement au sein d\'un cadre de gouvernance internationale.')">
+                <img src="Benevolat ONU.jpeg" alt="Bénévolat ONU">
+                <div class="overlay"><strong>UIT - Nations Unies</strong><span>Sommet Mondial (SMSI)</span></div>
             </div>
-            <div class="cert-card" onclick="ouvrirZoom('certif-ebu.jpg', 'EBU Academy', 'Digital Transformation and Public Service Media.')">
-                <img src="certif-ebu.jpg" alt="EBU">
-                <div class="overlay"><strong>EBU Academy</strong></div>
+
+            <div class="cert-card" onclick="ouvrirZoom('Data journalism.jpeg', 'Deutsche Welle & UE', 'Formation intensive sur les fondamentaux du data-journalisme : collecte, analyse et visualisation de données pour les médias.')">
+                <img src="Data journalism.jpeg" alt="Data Journalism">
+                <div class="overlay"><strong>Deutsche Welle / UE</strong><span>Data Journalism</span></div>
             </div>
+
+            <div class="cert-card" onclick="ouvrirZoom('DCAF.jpeg', 'DCAF Genève', 'Expertise en vulgarisation de l\'information juridique et judiciaire pour les journalistes professionnels.')">
+                <img src="DCAF.jpeg" alt="DCAF Genève">
+                <div class="overlay"><strong>DCAF Genève</strong><span>Information Juridique</span></div>
+            </div>
+
+            <div class="cert-card" onclick="ouvrirZoom('Geopolitique.jpeg', 'Friedrich Naumann Stiftung', 'Formation spécialisée sur les relations internationales et la couverture des conflits géopolitiques mondiaux.')">
+                <img src="Geopolitique.jpeg" alt="Géopolitique">
+                <div class="overlay"><strong>Friedrich Naumann</strong><span>Géopolitique & Conflits</span></div>
+            </div>
+
+            <div class="cert-card" onclick="ouvrirZoom('RFI actualité politique.jpeg', 'RFI & Monte Carlo Doualiya', 'Attestation de stage sur la couverture de l\'actualité politique, les techniques de reportage et l\'animation de débats.')">
+                <img src="RFI actualité politique.jpeg" alt="RFI">
+                <div class="overlay"><strong>RFI / MCD</strong><span>Actualité Politique</span></div>
+            </div>
+
         </div>
     </main>
 
@@ -113,8 +128,9 @@
             <span class="close-btn" onclick="fermerZoom()">&times;</span>
             <div class="modal-img-side"><img id="imgZoom" src=""></div>
             <div class="modal-text-side">
-                <h2 id="titreZoom" style="color:#003366; margin-bottom:10px;"></h2>
-                <p id="descZoom"></p>
+                <h2 id="titreZoom" style="color:#003366; border-bottom:2px solid #00d1ff; padding-bottom:10px; margin-bottom:15px;"></h2>
+                <p id="descZoom" style="font-size:1.1rem; color:#555;"></p>
+                <p style="margin-top:30px; font-weight:bold; color:#00d1ff;">Document Vérifié</p>
             </div>
         </div>
     </div>
@@ -130,6 +146,5 @@
             document.getElementById('zoneZoom').style.display = 'none';
         }
     </script>
-
 </body>
 </html>
