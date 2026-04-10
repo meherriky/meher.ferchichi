@@ -1,60 +1,64 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CERTIFICATS - MEHER FERCHICHI</title>
+    <title>CERTIFICATES - MEHER FERCHICHI</title>
     <style>
-        /* --- RESET & BASE --- */
+        /* --- RESET & STYLE DE BASE (Identique Bio/Index) --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', sans-serif; background-color: #f0f2f5; color: #333; line-height: 1.6; }
+        body { font-family: 'Segoe UI', sans-serif; background-color: #fff; color: #333; line-height: 1.8; }
 
-        /* --- BANDEAU PHOTO --- */
+        /* --- BANDEAU PHOTO (Identique) --- */
         .grande-photo-banner {
-            width: 100%; height: 300px;
-            background-image: url('image profil.png'); /* Vérifiez bien le nom du fichier sur GitHub */
-            background-size: cover; background-position: center;
-            box-shadow: inset 0 0 80px 40px rgba(255, 255, 255, 1);
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            text-align: center;
+            width: 100%; height: 400px;
+            background: #001f3f url('image profil.png') center/cover no-repeat;
+            display: flex; align-items: center; justify-content: center;
+            position: relative;
+        }
+        .grande-photo-banner::after { content: ""; position: absolute; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.3); }
+        .grande-photo-banner h1 {
+            position: relative; z-index: 2; font-size: 3.5rem; color: white;
+            text-shadow: 0 5px 15px rgba(0,0,0,0.5); letter-spacing: 8px; text-transform: uppercase;
         }
 
-        /* --- NAVIGATION --- */
-        nav { background-color: #333; padding: 15px; text-align: center; position: sticky; top: 0; z-index: 1000; }
-        nav a { color: white; text-decoration: none; margin: 0 15px; font-weight: bold; font-size: 0.9rem; }
+        /* --- NAVIGATION (Lien CERTIFICATES allumé) --- */
+        nav { background: #1a1a1a; padding: 20px; text-align: center; position: sticky; top: 0; z-index: 1000; border-bottom: 2px solid #00d1ff; }
+        nav a { color: rgba(255, 255, 255, 0.6); text-decoration: none; margin: 0 15px; font-weight: bold; transition: 0.3s; padding-bottom: 8px; font-size: 0.85rem; }
+        nav a.active { color: #00d1ff; border-bottom: 2px solid #00d1ff; text-shadow: 0 0 8px #00d1ff; }
         nav a:hover { color: #00d1ff; }
 
-        /* --- CONTENEUR PRINCIPAL --- */
-        .main-container { max-width: 1250px; margin: 40px auto; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        /* --- CONTENU PRINCIPAL --- */
+        .main-container { max-width: 1000px; margin: 0 auto; padding: 60px 20px; }
+        h2.section-title { font-size: 2.2rem; color: #003366; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px; border-bottom: 2px solid #eee; padding-bottom: 10px; }
 
-        /* --- GRILLE : 4 PAR LIGNE --- */
+        /* --- GRILLE DE CERTIFICATS (4 PAR LIGNE) --- */
         .grid-certifs { 
             display: grid; 
             grid-template-columns: repeat(4, 1fr); 
             gap: 20px; 
             margin-top: 30px; 
         }
-        
-        @media (max-width: 1000px) { .grid-certifs { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 600px) { .grid-certifs { grid-template-columns: 1fr; } }
 
         .cert-card {
             position: relative; height: 180px; background: #00122e; border-radius: 8px;
             overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); cursor: pointer;
+            transition: transform 0.3s ease;
         }
+        .cert-card:hover { transform: scale(1.03); }
         .cert-card img { width: 100%; height: 100%; object-fit: cover; }
 
-        /* EFFET SURVOL (OVERLAY) */
+        /* OVERLAY AU SURVOL */
         .overlay {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0, 51, 102, 0.9); color: white;
             display: flex; align-items: center; justify-content: center; text-align: center;
             padding: 15px; opacity: 0; transition: 0.4s ease; transform: translateY(100%);
-            font-size: 0.85rem;
+            font-size: 0.85rem; font-weight: bold;
         }
         .cert-card:hover .overlay { opacity: 1; transform: translateY(0); }
 
-        /* --- SYSTÈME DE ZOOM (MODALE) --- */
+        /* --- MODALE DE ZOOM (AUX COULEURS DU SITE) --- */
         #zoneZoom {
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0,0,0,0.9); z-index: 2000; align-items: center; justify-content: center; padding: 20px;
@@ -63,87 +67,7 @@
             display: flex; background: white; max-width: 1000px; width: 100%; 
             max-height: 85vh; border-radius: 10px; overflow: hidden; position: relative;
         }
-        .modal-img-side { flex: 1.2; background: #111; display: flex; align-items: center; justify-content: center; border-right: 1px solid #eee; }
+        .modal-img-side { flex: 1.2; background: #111; display: flex; align-items: center; justify-content: center; }
         .modal-img-side img { max-width: 100%; max-height: 80vh; object-fit: contain; }
-        .modal-text-side { flex: 1; padding: 40px; overflow-y: auto; display: flex; flex-direction: column; justify-content: center; }
-
-        @media (max-width: 800px) { .modal-box { flex-direction: column; } .modal-img-side { flex: none; height: 40%; } }
-    </style>
-</head>
-<body>
-
-    <div class="grande-photo-banner">
-        <h1 style="font-size: 2.5rem; color: #003366; text-shadow: 1px 1px 5px white;">MEHER FERCHICHI</h1>
-    </div>
-
-    <nav>
-        <a href="index.html">ACCUEIL</a>
-        <a href="categorie-a.html">BIOGRAPHIE</a>
-        <a href="categorie-b.html">CERTIFICAT</a>
-        <a href="categorie-c.html">ALBUM</a>
-        <a href="categorie-d.html">AUDIO PRODUCTION</a>
-        <a href="categorie-e.html">VIDEO PRODUCTION</a>
-        <a href="categorie-f.html">AI VIDEO PRODUCTION</a>
-        <a href="admin.html">Admin</a>
-    </nav>
-
-    <main class="main-container">
-        <h2 style="color: #003366; border-bottom: 2px solid #003366; padding-bottom: 10px;">Certifications & Accreditations</h2>
-        
-        <div class="grid-certifs">
-            <div class="cert-card" onclick="ouvrirZoom('Benevolat ONU.jpeg', 'WSIS - Web Editor (ITU/UN)', 'My journey in digital media began at the 2005 World Summit on the Information Society (WSIS). Serving as a Web Editor for the official Arabic website, I gained my first deep-dive experience into digital storytelling under the auspices of the International Telecommunication Union (ITU).')">
-                <img src="Benevolat ONU.jpeg" alt="ONU">
-                <div class="overlay"><p><strong>WSIS (ITU/UN)</strong><br>Détails</p></div>
-            </div>
-
-            <div class="cert-card" onclick="ouvrirZoom('RFI actualité politique.jpeg', 'Political Journalism Certification', 'Specialized program focused on Political News Coverage: Reporting and Debate. Managed by France Médias Monde in Tunis, emphasizing international standards of broadcast journalism.')">
-                <img src="RFI actualité politique.jpeg" alt="RFI">
-                <div class="overlay"><p><strong>Political Journalism</strong><br>Détails</p></div>
-            </div>
-
-            <div class="cert-card" onclick="ouvrirZoom('DCAF.jpeg', 'Legal & Judicial Information Popularization', 'Organised by DCAF, this program focused on the critical role of media in translating complex legal proceedings and human rights frameworks into accessible public information.')">
-                <img src="DCAF.jpeg" alt="DCAF">
-                <div class="overlay"><p><strong>Legal Journalism</strong><br>Détails</p></div>
-            </div>
-
-             <div class="cert-card" onclick="ouvrirZoom('Data journalism.jpeg', 'Advanced Training in Data Journalism Fundamentals', 'This Formation-production (Production-based training) certificate validates your proficiency in the foundations of data journalism. Unlike theoretical courses, this program focused on the practical application of data tools to create compelling, evidence-based news stories. ')">
-                <img src="Data journalism.jpeg" alt="DATA JOURNALISM">
-                <div class="overlay"><p><strong>DATA JOURNALISM</strong><br>Détails</p></div>
-            </div>
-            
-            </div>
-    </main>
-
-    <div id="zoneZoom">
-        <span onclick="fermerZoom()" style="position:absolute; top:20px; right:30px; color:white; font-size:40px; cursor:pointer; z-index:2100;">&times;</span>
-        <div class="modal-box">
-            <div class="modal-img-side"><img id="imgZoom" src=""></div>
-            <div class="modal-text-side">
-                <h2 id="titreZoom" style="color:#003366; margin-bottom: 15px;"></h2>
-                <hr style="margin-bottom: 20px; border: 0; border-top: 1px solid #eee;">
-                <p id="texteZoom" style="font-size: 1.1rem; color: #444;"></p>
-                <button onclick="fermerZoom()" style="margin-top:30px; padding:12px 25px; background:#CC0000; color:white; border:none; border-radius:5px; cursor:pointer; font-weight:bold;">Fermer</button>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        function ouvrirZoom(src, titre, texte) {
-            document.getElementById('zoneZoom').style.display = "flex";
-            document.getElementById('imgZoom').src = src;
-            document.getElementById('titreZoom').innerText = titre;
-            document.getElementById('texteZoom').innerText = texte;
-        }
-
-        function fermerZoom() {
-            document.getElementById('zoneZoom').style.display = "none";
-        }
-
-        window.onclick = function(event) {
-            if (event.target == document.getElementById('zoneZoom')) {
-                fermerZoom();
-            }
-        }
-    </script>
-</body>
-</html>
+        .modal-text-side { flex: 1; padding: 40px; overflow-y: auto; }
+        .modal-text-side h2 { color: #003366; margin-bottom: 15px; font-size: 1.5rem; border-bottom: 2px solid #00d1ff; padding-bottom: 10px; }
