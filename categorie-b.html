@@ -7,7 +7,7 @@
     <style>
         /* --- RESET & BASE STYLE --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', sans-serif; background-color: #fff; color: #333; line-height: 1.8; }
+        body { font-family: 'Segoe UI', sans-serif; background-color: #fff; color: #333; line-height: 1.6; }
 
         /* --- BANNER --- */
         .grande-photo-banner {
@@ -16,10 +16,11 @@
             display: flex; align-items: center; justify-content: center;
             position: relative;
         }
-        .grande-photo-banner::after { content: ""; position: absolute; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.4); }
+        .grande-photo-banner::after { content: ""; position: absolute; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.5); }
         .grande-photo-banner h1 {
             position: relative; z-index: 2; font-size: 3rem; color: white;
             text-shadow: 0 5px 15px rgba(0,0,0,0.5); letter-spacing: 5px; text-transform: uppercase;
+            text-align: center; padding: 0 20px;
         }
 
         /* --- NAVIGATION --- */
@@ -42,17 +43,20 @@
             background: #00122e; border-radius: 12px; overflow: hidden;
             box-shadow: 0 10px 20px rgba(0,0,0,0.1); cursor: pointer;
             transition: 0.3s ease; position: relative; height: 220px;
+            border: 1px solid #eee;
         }
-        .cert-card:hover { transform: translateY(-10px); }
+        .cert-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,209,255,0.2); }
         .cert-card img { width: 100%; height: 100%; object-fit: cover; opacity: 0.9; }
 
         .overlay {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 51, 102, 0.85); color: white;
+            background: rgba(0, 51, 102, 0.9); color: white;
             display: flex; flex-direction: column; align-items: center; justify-content: center;
-            text-align: center; padding: 15px; opacity: 0; transition: 0.4s; transform: translateY(100%);
+            text-align: center; padding: 20px; opacity: 0; transition: 0.4s; transform: translateY(100%);
         }
         .cert-card:hover .overlay { opacity: 1; transform: translateY(0); }
+        .overlay strong { font-size: 1rem; margin-bottom: 5px; color: #00d1ff; }
+        .overlay span { font-size: 0.85rem; }
 
         /* --- MODAL ZOOM --- */
         #zoneZoom {
@@ -63,21 +67,23 @@
             display: flex; background: white; max-width: 1100px; width: 100%; 
             max-height: 90vh; border-radius: 15px; overflow: hidden; position: relative;
         }
-        .modal-img-side { flex: 1.5; background: #222; display: flex; align-items: center; justify-content: center; }
+        .modal-img-side { flex: 1.5; background: #222; display: flex; align-items: center; justify-content: center; border-right: 1px solid #eee; }
         .modal-img-side img { max-width: 100%; max-height: 85vh; object-fit: contain; }
         .modal-text-side { flex: 1; padding: 40px; overflow-y: auto; background: #fff; }
-        .close-btn { position: absolute; top: 15px; right: 20px; font-size: 35px; cursor: pointer; color: #333; z-index: 100; }
+        .close-btn { position: absolute; top: 15px; right: 20px; font-size: 35px; cursor: pointer; color: #333; z-index: 100; transition: 0.2s; }
+        .close-btn:hover { color: #f00; }
 
         @media (max-width: 900px) {
             .modal-box { flex-direction: column; }
-            .modal-img-side { height: 400px; }
+            .modal-img-side { height: 40%; }
+            .grande-photo-banner h1 { font-size: 2rem; }
         }
     </style>
 </head>
 <body>
 
     <div class="grande-photo-banner">
-        <h1>Professional Credentials</h1>
+        <h1>Professional Certifications</h1>
     </div>
 
     <nav>
@@ -91,31 +97,61 @@
     </nav>
 
     <main class="main-container">
-        <h2 class="section-title">Verified Certifications</h2>
+        <h2 class="section-title">Verified Credentials</h2>
         
         <div class="grid-certifs">
             
-            <div class="cert-card" onclick="ouvrirZoom('Benevolat ONU.jpeg', 'ITU - United Nations', 'Summit Assistant Certificate for the World Summit on the Information Society (WSIS). Provided logistical support and demonstrated professional conduct within an International Global Governance framework.')">
+            <div class="cert-card" onclick="ouvrirZoom('2.pdf', 'ASBU & EBU Academy', 'AI in the Service of News Quality. Training focused on AI applications in news, threats to media professions, ethical boundaries, and case studies of EBU/ASBU Cloud exchange systems[cite: 72, 79, 80, 83, 85].')">
+                <div style="height:100%; display:flex; align-items:center; justify-content:center; background:#f0f7ff; color:#003366; font-weight:bold; padding:20px; text-align:center;">AI News Quality (2023)</div>
+                <div class="overlay"><strong>ASBU / EBU</strong><span>AI & News Quality</span></div>
+            </div>
+
+            <div class="cert-card" onclick="ouvrirZoom('3.pdf', 'ASBU & EBU Academy', 'Artificial Intelligence and Combating Fake News. Key modules: Verifying AI content, geolocation using AI, Google Lens for image/video verification, and advanced Twitter search[cite: 91, 97, 98, 100, 101, 103].')">
+                <div style="height:100%; display:flex; align-items:center; justify-content:center; background:#fff0f0; color:#c00; font-weight:bold; padding:20px; text-align:center;">AI & Fake News (2024)</div>
+                <div class="overlay"><strong>ASBU / EBU</strong><span>AI vs Fake News</span></div>
+            </div>
+
+            <div class="cert-card" onclick="ouvrirZoom('1.pdf', 'ASBU & EBU Academy', 'New Formats and Content for Generation Z. Explored Gen Z preferences, five steps for new content production, creativity enhancement, and strategic use of TikTok for media[cite: 54, 60, 61, 64, 65, 67].')">
+                <div style="height:100%; display:flex; align-items:center; justify-content:center; background:#f0fff0; color:#006600; font-weight:bold; padding:20px; text-align:center;">Gen Z Formats (2022)</div>
+                <div class="overlay"><strong>ASBU / EBU</strong><span>Gen Z Content</span></div>
+            </div>
+
+            <div class="cert-card" onclick="ouvrirZoom('7.jpeg', 'CAPJC & IOM', 'Media Treatment of Migration. Training conducted under the RDPP NA project, funded by the EU and implemented by the International Organization for Migration (OIM).')">
+                <img src="7.jpeg" alt="Migration Training">
+                <div class="overlay"><strong>CAPJC / OIM</strong><span>Migration Reporting</span></div>
+            </div>
+
+            <div class="cert-card" onclick="ouvrirZoom('9.jpeg', 'ASBU & EBU Academy', 'Verification of Digital News (2020). Advanced techniques for monitoring social media, handling user-generated content (UGC), and ethical guidelines for digital journalism.')">
+                <img src="9.jpeg" alt="Verification 2020">
+                <div class="overlay"><strong>ASBU / EBU</strong><span>Digital Verification</span></div>
+            </div>
+
+            <div class="cert-card" onclick="ouvrirZoom('12.jpeg', 'ASBU & EBU Academy', 'Resisting Fake News - Level 2 (2023). Deep dive into advanced image verification, sourcing through geolocation, and introduction to AI in the journalistic field.')">
+                <img src="12.jpeg" alt="Fake News Lvl 2">
+                <div class="overlay"><strong>ASBU / EBU</strong><span>Fake News (Level 2)</span></div>
+            </div>
+
+            <div class="cert-card" onclick="ouvrirZoom('Benevolat ONU.jpeg', 'ITU - United Nations', 'Summit Assistant Certificate for the World Summit on the Information Society (WSIS Tunis 2005). Professional contribution to global international governance.')">
                 <img src="Benevolat ONU.jpeg" alt="UN Volunteer">
                 <div class="overlay"><strong>ITU - United Nations</strong><span>WSIS Global Summit</span></div>
             </div>
 
-            <div class="cert-card" onclick="ouvrirZoom('Data journalism.jpeg', 'Deutsche Welle & EU', 'Professional training on the Foundations of Data Journalism. Focused on data analysis, information visualization, and digital storytelling techniques.')">
+            <div class="cert-card" onclick="ouvrirZoom('Data journalism.jpeg', 'Deutsche Welle & EU', 'Foundations of Data Journalism. Intensive training on data analysis, visualization, and storytelling supported by the European Union.')">
                 <img src="Data journalism.jpeg" alt="Data Journalism">
                 <div class="overlay"><strong>Deutsche Welle / EU</strong><span>Data Journalism</span></div>
             </div>
 
-            <div class="cert-card" onclick="ouvrirZoom('DCAF.jpeg', 'DCAF Geneva', 'Capacity building in the popularization of judicial and legal information for professional journalists. Focused on media law and regulatory compliance.')">
+            <div class="cert-card" onclick="ouvrirZoom('DCAF.jpeg', 'DCAF Geneva', 'Capacity building in popularizing legal and judicial information for journalists, organized by the Geneva Centre for Security Sector Governance.')">
                 <img src="DCAF.jpeg" alt="DCAF Geneva">
-                <div class="overlay"><strong>DCAF Geneva</strong><span>Media Law & Legal Info</span></div>
+                <div class="overlay"><strong>DCAF Geneva</strong><span>Legal Information</span></div>
             </div>
 
-            <div class="cert-card" onclick="ouvrirZoom('Geopolitique.jpeg', 'Friedrich Naumann Foundation', 'Specialized training in international relations and the coverage of global geopolitical conflicts. Advanced analysis of international political landscapes.')">
+            <div class="cert-card" onclick="ouvrirZoom('Geopolitique.jpeg', 'Friedrich Naumann Foundation', 'Specialized training in Journalism, International Relations, and Geopolitical Conflicts.')">
                 <img src="Geopolitique.jpeg" alt="Geopolitics">
-                <div class="overlay"><strong>Friedrich Naumann</strong><span>Geopolitics & Conflicts</span></div>
+                <div class="overlay"><strong>Friedrich Naumann</strong><span>Geopolitics</span></div>
             </div>
 
-            <div class="cert-card" onclick="ouvrirZoom('RFI actualité politique.jpeg', 'RFI & Monte Carlo Doualiya', 'Professional training on political news coverage: reporting and debate. Advanced skill development in investigative reporting and live broadcasting.')">
+            <div class="cert-card" onclick="ouvrirZoom('RFI actualité politique.jpeg', 'RFI & Monte Carlo Doualiya', 'Stage on Political News Coverage: reporting and debate techniques. Professional broadcasting development.')">
                 <img src="RFI actualité politique.jpeg" alt="RFI">
                 <div class="overlay"><strong>RFI / MCD</strong><span>Political Reporting</span></div>
             </div>
@@ -126,24 +162,47 @@
     <div id="zoneZoom" onclick="fermerZoom()">
         <div class="modal-box" onclick="event.stopPropagation()">
             <span class="close-btn" onclick="fermerZoom()">&times;</span>
-            <div class="modal-img-side"><img id="imgZoom" src=""></div>
+            <div class="modal-img-side">
+                <div id="mediaContainer" style="width:100%; height:100%; display:flex; align-items:center; justify-content:center;">
+                    <img id="imgZoom" src="" style="display:none;">
+                    <iframe id="pdfZoom" src="" style="display:none; width:100%; height:100%;" frameborder="0"></iframe>
+                </div>
+            </div>
             <div class="modal-text-side">
-                <h2 id="titreZoom" style="color:#003366; border-bottom:2px solid #00d1ff; padding-bottom:10px; margin-bottom:15px;"></h2>
-                <p id="descZoom" style="font-size:1.1rem; color:#555;"></p>
-                <p style="margin-top:30px; font-weight:bold; color:#00d1ff;">Verified Document</p>
+                <h2 id="titreZoom" style="color:#003366; border-bottom:2px solid #00d1ff; padding-bottom:10px; margin-bottom:15px; font-size:1.5rem;"></h2>
+                <p id="descZoom" style="font-size:1.05rem; color:#555;"></p>
+                <div style="margin-top:30px; padding:15px; background:#f9f9f9; border-left:4px solid #00d1ff;">
+                    <p style="font-weight:bold; color:#333; font-size:0.9rem;">Status: Official Document Verified</p>
+                </div>
             </div>
         </div>
     </div>
 
     <script>
         function ouvrirZoom(src, titre, desc) {
-            document.getElementById('imgZoom').src = src;
+            const imgZoom = document.getElementById('imgZoom');
+            const pdfZoom = document.getElementById('pdfZoom');
+            
+            // Reset display
+            imgZoom.style.display = 'none';
+            pdfZoom.style.display = 'none';
+
+            if (src.toLowerCase().endsWith('.pdf')) {
+                pdfZoom.src = src;
+                pdfZoom.style.display = 'block';
+            } else {
+                imgZoom.src = src;
+                imgZoom.style.display = 'block';
+            }
+
             document.getElementById('titreZoom').innerText = titre;
             document.getElementById('descZoom').innerText = desc;
             document.getElementById('zoneZoom').style.display = 'flex';
         }
+
         function fermerZoom() {
             document.getElementById('zoneZoom').style.display = 'none';
+            document.getElementById('pdfZoom').src = ""; // Stop PDF loading
         }
     </script>
 </body>
