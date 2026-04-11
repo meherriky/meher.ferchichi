@@ -3,105 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CERTIFICATES - MEHER FERCHICHI</title>
+    <title>CERTIFICATIONS - MEHER FERCHICHI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        /* --- RESET & BASE STYLE --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', sans-serif; background-color: #fff; color: #333; line-height: 1.6; overflow-x: hidden; }
+        body { font-family: 'Montserrat', sans-serif; background-color: #f4f7f9; color: #333; line-height: 1.6; }
 
-        /* --- STYLE DE LA BANNIÈRE (Mis à jour) --- */
         .grande-photo-banner {
-            width: 100%; height: 500px;
+            width: 100%; height: 400px;
             background: #001f3f url('image profil.png') center/cover no-repeat;
             display: flex; align-items: center; justify-content: center;
             position: relative; text-align: center;
         }
-        .grande-photo-banner::after { 
-            content: ""; position: absolute; top:0; left:0; width:100%; height:100%; 
-            background: rgba(0,0,0,0.5); 
-        }
+        .grande-photo-banner::after { content: ""; position: absolute; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.5); }
+        .banner-content { position: relative; z-index: 2; color: white; }
+        .main-name { font-size: 3rem; letter-spacing: 5px; text-transform: uppercase; font-family: 'Playfair Display', serif; }
 
-        .banner-content { position: relative; z-index: 2; }
-
-        .main-name {
-            font-size: 3.5rem; color: white;
-            text-shadow: 0 5px 15px rgba(0,0,0,0.5);
-            letter-spacing: 8px; text-transform: uppercase;
-            margin-bottom: 10px;
-        }
-
-        .journalist-line {
-            font-family: 'Georgia', serif; font-style: italic; font-size: 1.8rem;
-            color: #00d1ff; display: flex; align-items: center; justify-content: center; gap: 15px;
-            margin-bottom: 8px;
-        }
-
-        .mini-flag {
-            width: 35px; height: auto; border-radius: 4px;
-            box-shadow: 0 0 10px rgba(255,255,255,0.3); border: 1px solid rgba(255,255,255,0.2);
-        }
-
-        .strategist-line {
-            font-family: 'Verdana', sans-serif; font-weight: bold; font-size: 1.1rem;
-            color: #ffd700; letter-spacing: 4px; text-transform: uppercase;
-        }
-
-        /* --- NAVIGATION --- */
         nav { background: #1a1a1a; padding: 20px; text-align: center; position: sticky; top: 0; z-index: 1000; border-bottom: 2px solid #00d1ff; }
-        nav a { color: rgba(255, 255, 255, 0.6); text-decoration: none; margin: 0 15px; font-weight: bold; transition: 0.3s; font-size: 0.85rem; }
-        nav a.active { color: #00d1ff; border-bottom: 2px solid #00d1ff; text-shadow: 0 0 8px #00d1ff; padding-bottom: 5px; }
-        nav a:hover { color: #00d1ff; }
+        nav a { color: rgba(255, 255, 255, 0.6); text-decoration: none; margin: 0 15px; font-weight: bold; font-size: 0.85rem; transition: 0.3s; }
+        nav a.active { color: #00d1ff; border-bottom: 2px solid #00d1ff; padding-bottom: 5px; }
 
-        /* --- CONTENT GRID --- */
-        .main-container { max-width: 1200px; margin: 0 auto; padding: 60px 20px; }
-        h2.section-title { font-size: 2rem; color: #003366; text-transform: uppercase; margin-bottom: 40px; border-bottom: 2px solid #eee; padding-bottom: 10px; }
-        
-        .grid-certifs {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 25px;
-        }
+        .main-container { max-width: 1100px; margin: 0 auto; padding: 60px 20px; }
+        .cert-grid { display: grid; grid-template-columns: 1fr; gap: 50px; }
 
         .cert-card {
-            background: #00122e; border-radius: 12px; overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1); cursor: pointer;
-            transition: 0.3s ease; position: relative; height: 220px;
-            border: 1px solid #eee;
+            background: #fff;
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border: 1px solid #eaeaea;
         }
-        .cert-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,209,255,0.2); }
-        .cert-card img { width: 100%; height: 100%; object-fit: cover; opacity: 0.9; }
 
-        .overlay {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 51, 102, 0.9); color: white;
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            text-align: center; padding: 20px; opacity: 0; transition: 0.4s; transform: translateY(100%);
-        }
-        .cert-card:hover .overlay { opacity: 1; transform: translateY(0); }
-        .overlay strong { font-size: 1rem; margin-bottom: 5px; color: #00d1ff; }
-        .overlay span { font-size: 0.85rem; }
+        .cert-image { background: #eee; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .cert-image img { width: 100%; height: 100%; object-fit: cover; }
 
-        /* --- MODAL ZOOM --- */
-        #zoneZoom {
-            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.95); z-index: 2000; align-items: center; justify-content: center; padding: 20px;
-        }
-        .modal-box {
-            display: flex; background: white; max-width: 1100px; width: 100%; 
-            max-height: 90vh; border-radius: 15px; overflow: hidden; position: relative;
-        }
-        .modal-img-side { flex: 1.5; background: #222; display: flex; align-items: center; justify-content: center; border-right: 1px solid #eee; }
-        .modal-img-side img { max-width: 100%; max-height: 85vh; object-fit: contain; }
-        .modal-text-side { flex: 1; padding: 40px; overflow-y: auto; background: #fff; }
-        .close-btn { position: absolute; top: 15px; right: 20px; font-size: 35px; cursor: pointer; color: #333; z-index: 100; transition: 0.2s; }
-        .close-btn:hover { color: #f00; }
+        .cert-info { padding: 40px; }
+        .cert-title { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: #001f3f; margin-bottom: 10px; }
+        .cert-org { font-weight: 600; color: #00d1ff; text-transform: uppercase; letter-spacing: 1px; font-size: 0.9rem; margin-bottom: 5px; display: block; }
+        .cert-date { font-style: italic; color: #888; margin-bottom: 20px; display: block; font-size: 0.9rem; }
+        
+        .cert-desc { font-size: 0.95rem; margin-bottom: 20px; text-align: justify; color: #555; }
+        
+        .competencies-title { font-weight: 700; font-size: 0.9rem; text-transform: uppercase; margin-bottom: 10px; color: #333; }
+        .competencies-list { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .competencies-list li { font-size: 0.85rem; padding-left: 15px; position: relative; color: #666; }
+        .competencies-list li::before { content: "◆"; position: absolute; left: 0; color: #00d1ff; font-weight: bold; }
 
-        @media (max-width: 900px) {
-            .modal-box { flex-direction: column; }
-            .modal-img-side { height: 40%; }
-            .main-name { font-size: 2.2rem; }
-            .journalist-line { font-size: 1.3rem; }
-        }
+        @media (max-width: 900px) { .cert-card { grid-template-columns: 1fr; } .cert-image { height: 250px; } }
     </style>
 </head>
 <body>
@@ -109,13 +59,7 @@
     <div class="grande-photo-banner">
         <div class="banner-content">
             <h1 class="main-name">Meher Ferchichi</h1>
-            <div class="sub-line journalist-line">
-                <span>TUNISIAN JOURNALIST</span>
-                <img src="https://flagcdn.com/w80/tn.png" alt="Tunisia Flag" class="mini-flag">
-            </div>
-            <div class="sub-line strategist-line">
-                DIGITAL CONTENT STRATEGIST
-            </div>
+            <p>PROFESSIONAL CERTIFICATIONS & AWARDS</p>
         </div>
     </div>
 
@@ -130,109 +74,129 @@
     </nav>
 
     <main class="main-container">
-        <h2 class="section-title">Verified Credentials</h2>
-        
-        <div class="grid-certifs">
-            <div class="cert-card" onclick="ouvrirZoom('AI in the Service of News Quality.jpg', 'ASBU & EBU Academy', 'AI in the Service of News Quality (2023). Focused on AI applications, ethical boundaries, and EBU/ASBU Cloud systems.')">
-                <div style="height:100%; display:flex; align-items:center; justify-content:center; background:#f0f7ff; color:#003366; font-weight:bold; padding:20px; text-align:center;">AI News Quality</div>
-                <div class="overlay"><strong>ASBU / EBU</strong><span>AI & News Quality</span></div>
+        <div class="cert-grid">
+
+            <div class="cert-card">
+                <div class="cert-image"><img src="wsis_cert.jpg" alt="SMSI Certification"></div>
+                <div class="cert-info">
+                    <span class="cert-org">International Telecommunication Union (ITU) / United Nations</span>
+                    <h2 class="cert-title">Contribution to the World Summit on the Information Society (WSIS)</h2>
+                    <span class="cert-date">November 2005</span>
+                    <p class="cert-desc">Official certification testifying to early engagement in global information governance as a Summit Assistant during the second phase of WSIS in Tunis[cite: 39, 42].</p>
+                    <div class="competencies-title">Acquired Soft Skills:</div>
+                    <ul class="competencies-list">
+                        <li>International Protocol Mastery [cite: 45]</li>
+                        <li>Global Information Vision [cite: 47]</li>
+                        <li>Operational Rigor [cite: 48]</li>
+                        <li>UN Diplomatic Standards [cite: 45]</li>
+                    </ul>
+                </div>
             </div>
 
-            <div class="cert-card" onclick="ouvrirZoom('AI and Combating Fake News.jpg', 'ASBU & EBU Academy', 'AI and Combating Fake News (2024). Verifying AI content, geolocation, and Google Lens techniques.')">
-                <div style="height:100%; display:flex; align-items:center; justify-content:center; background:#fff0f0; color:#c00; font-weight:bold; padding:20px; text-align:center;">AI & Fake News</div>
-                <div class="overlay"><strong>ASBU / EBU</strong><span>AI vs Fake News</span></div>
+            <div class="cert-card">
+                <div class="cert-image"><img src="political_journalism.jpg" alt="RFI Certification"></div>
+                <div class="cert-info">
+                    <span class="cert-org">Radio France Internationale (RFI) & Monte Carlo Doualiya (MCD)</span>
+                    <h2 class="cert-title">Professional Certification in Political Journalism & Media Debate</h2>
+                    <span class="cert-date">April - May 2011</span>
+                    <p class="cert-desc">Intensive program focused on "Political News Coverage: Reporting and Debate" conducted during a pivotal historical period in Tunis[cite: 50, 54].</p>
+                    <div class="competencies-title">Core Competencies:</div>
+                    <ul class="competencies-list">
+                        <li>Advanced Political Reporting [cite: 56]</li>
+                        <li>Editorial Leadership in Debates [cite: 57]</li>
+                        <li>International Standards Integration [cite: 58]</li>
+                        <li>Crisis Communication Management [cite: 59]</li>
+                    </ul>
+                </div>
             </div>
 
-            <div class="cert-card" onclick="ouvrirZoom('New Formats for Gen Z.jpg', 'ASBU & EBU Academy', 'New Formats for Gen Z (2022). Explored preferences, content production, and TikTok strategy.')">
-                <div style="height:100%; display:flex; align-items:center; justify-content:center; background:#f0fff0; color:#006600; font-weight:bold; padding:20px; text-align:center;">Gen Z Formats</div>
-                <div class="overlay"><strong>ASBU / EBU</strong><span>Gen Z Content</span></div>
+            <div class="cert-card">
+                <div class="cert-image"><img src="judicial_cert.jpg" alt="DCAF Certification"></div>
+                <div class="cert-info">
+                    <span class="cert-org">Geneva Centre for Security Sector Governance (DCAF)</span>
+                    <h2 class="cert-title">Specialist Certification in Judicial & Legal Information Dissemination</h2>
+                    <span class="cert-date">October - November 2018</span>
+                    <p class="cert-desc">Validation of expertise in popularizing legal and judicial information for the general public while maintaining technical accuracy[cite: 60, 63, 66].</p>
+                    <div class="competencies-title">Core Competencies:</div>
+                    <ul class="competencies-list">
+                        <li>Legal Journalism & Popularization [cite: 66]</li>
+                        <li>Media Governance & Rule of Law [cite: 68]</li>
+                        <li>Regulatory Compliance (HAICA/ISIE) [cite: 69]</li>
+                        <li>Ethical Reporting on Security [cite: 70]</li>
+                    </ul>
+                </div>
             </div>
 
-            <div class="cert-card" onclick="ouvrirZoom('71.jpeg', 'CAPJC & IOM', 'Media Treatment of Migration. Training funded by the EU and implemented by OIM.')">
-                <img src="7.jpeg" alt="Migration Training">
-                <div class="overlay"><strong>CAPJC / OIM</strong><span>Migration Reporting</span></div>
+            <div class="cert-card">
+                <div class="cert-image"><img src="radio numerique.jpg" alt="Digital Radio Journalism"></div>
+                <div class="cert-info">
+                    <span class="cert-org">CAPJC (Tunisian Prime Minister's Office)</span>
+                    <h2 class="cert-title">Professional Certification in Digital Radio Journalism</h2>
+                    <span class="cert-date">May 14-18, 2007</span>
+                    <p class="cert-desc">Advanced training session in "Journalisme Radio Numérique" certifying early mastery of digital broadcasting tools and production workflows[cite: 71, 74, 75].</p>
+                    <div class="competencies-title">Core Competencies:</div>
+                    <ul class="competencies-list">
+                        <li>Digital Audio Workflow [cite: 77]</li>
+                        <li>Modern Newsroom Integration [cite: 78]</li>
+                        <li>Technical Production Proficiency [cite: 79]</li>
+                        <li>Early Tech Adoption [cite: 80]</li>
+                    </ul>
+                </div>
             </div>
 
-            <div class="cert-card" onclick="ouvrirZoom('9.jpeg', 'ASBU & EBU Academy', 'Verification of Digital News (2020). Monitoring social media and UGC handling.')">
-                <img src="9.jpeg" alt="Verification 2020">
-                <div class="overlay"><strong>ASBU / EBU</strong><span>Digital Verification</span></div>
+            <div class="cert-card">
+                <div class="cert-image"><img src="redaction radio.jpg" alt="Radio Writing"></div>
+                <div class="cert-info">
+                    <span class="cert-org">CAPJC & Ministry of Communication</span>
+                    <h2 class="cert-title">Professional Certification in Radio News Writing & Presentation</h2>
+                    <span class="cert-date">February 08-13, 2010</span>
+                    <p class="cert-desc">Validated mastery of "La rédaction de l'information présentée à la radio", focusing on creating concise and impactful scripts for oral delivery[cite: 82, 85, 86].</p>
+                    <div class="competencies-title">Core Competencies:</div>
+                    <ul class="competencies-list">
+                        <li>Radio Scriptwriting & Rhythm [cite: 89]</li>
+                        <li>Editorial Synthesis [cite: 90]</li>
+                        <li>Information Structure & Flow [cite: 91]</li>
+                        <li>Live Professional Delivery [cite: 92]</li>
+                    </ul>
+                </div>
             </div>
 
-            <div class="cert-card" onclick="ouvrirZoom('121.jpeg', 'ASBU & EBU Academy', 'Resisting Fake News - Level 2 (2023). Geolocation and advanced verification.')">
-                <img src="12.jpeg" alt="Fake News Lvl 2">
-                <div class="overlay"><strong>ASBU / EBU</strong><span>Fake News (Lvl 2)</span></div>
+            <div class="cert-card">
+                <div class="cert-image"><img src="data_journalism.jpg" alt="Data Journalism"></div>
+                <div class="cert-info">
+                    <span class="cert-org">European Union & DW Akademie</span>
+                    <h2 class="cert-title">Advanced Training in Data Journalism Fundamentals</h2>
+                    <span class="cert-date">February 2019</span>
+                    <p class="cert-desc">Production-based training certifying proficiency in extracting insights from complex datasets and creating visual news stories[cite: 94, 97, 98].</p>
+                    <div class="competencies-title">Core Competencies:</div>
+                    <ul class="competencies-list">
+                        <li>Data Analysis & Interpretation [cite: 101]</li>
+                        <li>Information Visualization [cite: 102]</li>
+                        <li>Evidence-Based Storytelling [cite: 103]</li>
+                        <li>Digital Transformation Leadership [cite: 104]</li>
+                    </ul>
+                </div>
             </div>
 
-            <div class="cert-card" onclick="ouvrirZoom('Benevolat ONU.jpeg', 'ITU - United Nations', 'Summit Assistant for the WSIS Tunis 2005.')">
-                <img src="Benevolat ONU.jpeg" alt="UN Volunteer">
-                <div class="overlay"><strong>ITU - United Nations</strong><span>WSIS Global Summit</span></div>
+            <div class="cert-card">
+                <div class="cert-image"><img src="ai_certification.jpg" alt="AI Journalism"></div>
+                <div class="cert-info">
+                    <span class="cert-org">ASBU & EBU Academy</span>
+                    <h2 class="cert-title">Artificial Intelligence in Journalism & News Quality</h2>
+                    <span class="cert-date">2023 - 2024</span>
+                    <p class="cert-desc">Specialized certification on integrating AI tools to enhance editorial quality, fact-checking, and digital news verification in modern newsrooms.</p>
+                    <div class="competencies-title">Core Competencies:</div>
+                    <ul class="competencies-list">
+                        <li>AI News Integration</li>
+                        <li>Digital Verification</li>
+                        <li>Automated Content Strategy</li>
+                        <li>Newsroom Quality Oversight</li>
+                    </ul>
+                </div>
             </div>
 
-            <div class="cert-card" onclick="ouvrirZoom('Data journalism.jpeg', 'Deutsche Welle & EU', 'Foundations of Data Journalism. Supported by the EU.')">
-                <img src="Data journalism.jpeg" alt="Data Journalism">
-                <div class="overlay"><strong>DW / EU</strong><span>Data Journalism</span></div>
-            </div>
-
-            <div class="cert-card" onclick="ouvrirZoom('DCAF.jpeg', 'DCAF Geneva', 'Capacity building in popularizing legal information.')">
-                <img src="DCAF.jpeg" alt="DCAF Geneva">
-                <div class="overlay"><strong>DCAF Geneva</strong><span>Legal Information</span></div>
-            </div>
-
-            <div class="cert-card" onclick="ouvrirZoom('Geopolitique1.jpeg', 'Friedrich Naumann Foundation', 'Specialized training in Journalism and Geopolitics.')">
-                <img src="Geopolitique.jpeg" alt="Geopolitics">
-                <div class="overlay"><strong>Friedrich Naumann</strong><span>Geopolitics</span></div>
-            </div>
-
-            <div class="cert-card" onclick="ouvrirZoom('RFI actualité politique.jpeg', 'RFI & Monte Carlo Doualiya', 'Stage on Political News Coverage.')">
-                <img src="RFI actualité politique.jpeg" alt="RFI">
-                <div class="overlay"><strong>RFI / MCD</strong><span>Political Reporting</span></div>
-            </div>
         </div>
     </main>
 
-    <div id="zoneZoom" onclick="fermerZoom()">
-        <div class="modal-box" onclick="event.stopPropagation()">
-            <span class="close-btn" onclick="fermerZoom()">&times;</span>
-            <div class="modal-img-side">
-                <div id="mediaContainer" style="width:100%; height:100%; display:flex; align-items:center; justify-content:center;">
-                    <img id="imgZoom" src="" style="display:none;">
-                    <iframe id="pdfZoom" src="" style="display:none; width:100%; height:100%;" frameborder="0"></iframe>
-                </div>
-            </div>
-            <div class="modal-text-side">
-                <h2 id="titreZoom" style="color:#003366; border-bottom:2px solid #00d1ff; padding-bottom:10px; margin-bottom:15px; font-size:1.5rem;"></h2>
-                <p id="descZoom" style="font-size:1.05rem; color:#555;"></p>
-                <div style="margin-top:30px; padding:15px; background:#f9f9f9; border-left:4px solid #00d1ff;">
-                    <p style="font-weight:bold; color:#333; font-size:0.9rem;">Status: Official Document Verified</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        function ouvrirZoom(src, titre, desc) {
-            const imgZoom = document.getElementById('imgZoom');
-            const pdfZoom = document.getElementById('pdfZoom');
-            imgZoom.style.display = 'none';
-            pdfZoom.style.display = 'none';
-
-            if (src.toLowerCase().endsWith('.pdf')) {
-                pdfZoom.src = src;
-                pdfZoom.style.display = 'block';
-            } else {
-                imgZoom.src = src;
-                imgZoom.style.display = 'block';
-            }
-
-            document.getElementById('titreZoom').innerText = titre;
-            document.getElementById('descZoom').innerText = desc;
-            document.getElementById('zoneZoom').style.display = 'flex';
-        }
-
-        function fermerZoom() {
-            document.getElementById('zoneZoom').style.display = 'none';
-            document.getElementById('pdfZoom').src = "";
-        }
-    </script>
 </body>
 </html>
