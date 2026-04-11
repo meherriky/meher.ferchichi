@@ -7,9 +7,9 @@
     <style>
         /* --- RESET & STYLE DE BASE --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', sans-serif; background-color: #fff; color: #333; line-height: 1.8; overflow-x: hidden; }
+        body { font-family: 'Segoe UI', sans-serif; background-color: #fff; color: #333; line-height: 1.6; overflow-x: hidden; }
 
-        /* --- STYLE DE LA BANNIÈRE (Cohérence Charte) --- */
+        /* --- STYLE DE LA BANNIÈRE --- */
         .grande-photo-banner {
             width: 100%; height: 500px;
             background: #001f3f url('image profil.png') center/cover no-repeat;
@@ -20,122 +20,42 @@
             content: ""; position: absolute; top:0; left:0; width:100%; height:100%; 
             background: rgba(0,0,0,0.5); 
         }
-
         .banner-content { position: relative; z-index: 2; }
-
-        .main-name {
-            font-size: 3.5rem; color: white;
-            text-shadow: 0 5px 15px rgba(0,0,0,0.5);
-            letter-spacing: 8px; text-transform: uppercase;
-            margin-bottom: 10px;
-        }
-
-        .journalist-line {
-            font-family: 'Georgia', serif; font-style: italic; font-size: 1.8rem;
-            color: #00d1ff; display: flex; align-items: center; justify-content: center; gap: 15px;
-            margin-bottom: 8px;
-        }
-
-        .mini-flag {
-            width: 35px; height: auto; border-radius: 4px;
-            box-shadow: 0 0 10px rgba(255,255,255,0.3); border: 1px solid rgba(255,255,255,0.2);
-        }
-
-        .strategist-line {
-            font-family: 'Verdana', sans-serif; font-weight: bold; font-size: 1.1rem;
-            color: #ffd700; letter-spacing: 4px; text-transform: uppercase;
-        }
+        .main-name { font-size: 3.5rem; color: white; letter-spacing: 8px; text-transform: uppercase; margin-bottom: 10px; }
+        .journalist-line { font-family: 'Georgia', serif; font-style: italic; font-size: 1.8rem; color: #00d1ff; margin-bottom: 8px; }
+        .strategist-line { font-family: 'Verdana', sans-serif; font-weight: bold; font-size: 1.1rem; color: #ffd700; letter-spacing: 4px; text-transform: uppercase; }
 
         /* --- NAVIGATION --- */
-        nav { 
-            background: #1a1a1a; padding: 20px; text-align: center; 
-            position: sticky; top: 0; z-index: 1000; border-bottom: 2px solid #00d1ff; 
-        }
-        nav a { 
-            color: rgba(255, 255, 255, 0.6); text-decoration: none; 
-            margin: 0 15px; font-weight: bold; transition: 0.3s; font-size: 0.85rem;
-        }
-        nav a.active { color: #00d1ff; border-bottom: 2px solid #00d1ff; padding-bottom: 5px; text-shadow: 0 0 8px #00d1ff; }
-        nav a:hover { color: #00d1ff; }
+        nav { background: #1a1a1a; padding: 20px; text-align: center; position: sticky; top: 0; z-index: 1000; border-bottom: 2px solid #00d1ff; }
+        nav a { color: rgba(255, 255, 255, 0.6); text-decoration: none; margin: 0 15px; font-weight: bold; transition: 0.3s; font-size: 0.85rem; }
+        nav a.active { color: #00d1ff; border-bottom: 2px solid #00d1ff; padding-bottom: 5px; }
 
         /* --- CONTENU --- */
         .main-container { max-width: 1100px; margin: 0 auto; padding: 60px 20px; }
-        h2.section-title { 
-            font-size: 2.2rem; color: #003366; text-transform: uppercase; 
-            letter-spacing: 2px; margin-bottom: 30px; border-bottom: 2px solid #eee; padding-bottom: 10px; 
-        }
+        h2.section-title { font-size: 2.2rem; color: #003366; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px; border-bottom: 2px solid #eee; padding-bottom: 10px; }
 
         /* --- GRILLE VIDÉO --- */
-        .video-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 35px;
-            margin-top: 30px;
-        }
+        .video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 40px; }
+        .video-card { background: #ffffff; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 1px solid #eaeaea; transition: 0.3s; }
+        .video-card:hover { transform: translateY(-10px); border-color: #00d1ff; }
+        .video-wrapper video { width: 100%; display: block; background: #000; }
 
-        .video-card {
-            background: #f9f9f9;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            transition: 0.3s ease;
-            border: 1px solid #eee;
-        }
+        /* --- STYLES DES DONNÉES --- */
+        .video-info { padding: 25px; }
+        .vid-title { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: #003366; margin-bottom: 5px; display: block; font-weight: 700; }
+        .vid-date { font-family: 'Courier New', monospace; font-size: 0.9rem; color: #00d1ff; font-weight: bold; text-transform: uppercase; display: block; margin-bottom: 15px; border-left: 3px solid #00d1ff; padding-left: 10px; }
+        .vid-description { font-family: 'Verdana', sans-serif; font-size: 0.95rem; color: #555; text-align: justify; line-height: 1.6; }
 
-        .video-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 35px rgba(0, 209, 255, 0.25);
-        }
-
-        .video-wrapper {
-            position: relative;
-            padding-bottom: 56.25%; /* Ratio 16:9 */
-            height: 0;
-            background: #000;
-        }
-
-        .video-wrapper iframe {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-        }
-
-        .video-info {
-            padding: 25px;
-        }
-
-        .video-info h3 {
-            color: #003366;
-            font-size: 1.3rem;
-            margin-bottom: 12px;
-            border-left: 4px solid #00d1ff;
-            padding-left: 15px;
-        }
-
-        .video-info p {
-            font-size: 1rem;
-            color: #555;
-            line-height: 1.6;
-            text-align: justify;
-        }
-
-        @media (max-width: 850px) {
-            .video-grid { grid-template-columns: 1fr; }
-            .main-name { font-size: 2.2rem; }
-            .journalist-line { font-size: 1.3rem; }
-            nav a { margin: 5px; font-size: 0.75rem; }
-            .grande-photo-banner { height: 400px; }
-        }
+        @media (max-width: 850px) { .video-grid { grid-template-columns: 1fr; } .main-name { font-size: 2.2rem; } }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <div class="grande-photo-banner">
         <div class="banner-content">
             <h1 class="main-name">Meher Ferchichi</h1>
-            <div class="journalist-line">
-                <span>TUNISIAN JOURNALIST</span>
-                <img src="https://flagcdn.com/w80/tn.png" alt="Tunisia Flag" class="mini-flag">
-            </div>
+            <div class="journalist-line">TUNISIAN JOURNALIST</div>
             <div class="strategist-line">DIGITAL CONTENT STRATEGIST</div>
         </div>
     </div>
@@ -151,55 +71,70 @@
     </nav>
 
     <main class="main-container">
-        <h2 class="section-title">Video Portfolio</h2>
-        <p style="margin-bottom: 40px; color: #666; font-style: italic; font-size: 1.1rem;">
-            Showcasing my work in Mobile Journalism (MoJo), documentary filmmaking, and digital news production.
-        </p>
-
+        <h2 class="section-title">Video News Portfolio</h2>
         <div class="video-grid">
             
             <div class="video-card">
                 <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/ID_VIDEO_1" frameborder="0" allowfullscreen></iframe>
+                    <video controls preload="metadata">
+                        <source src="https://res.cloudinary.com/dhicihczs/video/upload/v1775903491/30-04-2020_orkmro.mp4" type="video/mp4">
+                    </video>
                 </div>
                 <div class="video-info">
-                    <h3>Digital Transformation in Media</h3>
-                    <p>A documentary report on how Radio Tunisienne integrated digital tools into its traditional newsroom workflows and the evolution of broadcast journalism.</p>
+                    <span class="vid-title">Live Radio News Broadcast</span>
+                    <span class="vid-date">Broadcast Date: April 30, 2020</span>
+                    <p class="vid-description">
+                        Live presentation of radio news bulletins on Radio Tunisienne, covering political, economic, social, and sports news updates.
+                    </p>
                 </div>
             </div>
 
             <div class="video-card">
                 <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/ID_VIDEO_2" frameborder="0" allowfullscreen></iframe>
+                    <video controls preload="metadata">
+                        <source src="https://res.cloudinary.com/dhicihczs/video/upload/v1775903541/28_2020_rtlpp7.mp4" type="video/mp4">
+                    </video>
                 </div>
                 <div class="video-info">
-                    <h3>Mobile Journalism (MoJo) Demo</h3>
-                    <p>Examples of field reporting produced entirely on smartphones, demonstrating how speed can meet high-quality journalistic standards in the field.</p>
+                    <span class="vid-title">Main News Bulletin Presentation</span>
+                    <span class="vid-date">Broadcast Date: April 28, 2020</span>
+                    <p class="vid-description">
+                        Direct on-air news anchoring for the Tunisian National Radio, featuring comprehensive coverage of national and international affairs.
+                    </p>
                 </div>
             </div>
 
             <div class="video-card">
                 <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/ID_VIDEO_3" frameborder="0" allowfullscreen></iframe>
+                    <video controls preload="metadata">
+                        <source src="https://res.cloudinary.com/dhicihczs/video/upload/v1775903510/12042020_mik2mj.mp4" type="video/mp4">
+                    </video>
                 </div>
                 <div class="video-info">
-                    <h3>International Event Coverage</h3>
-                    <p>Highlights from international summits and foreign reporting missions, showcasing strategic content planning and real-time distribution.</p>
+                    <span class="vid-title">Daily News Review</span>
+                    <span class="vid-date">Broadcast Date: April 12, 2020</span>
+                    <p class="vid-description">
+                        Presentation of diverse news segments including politics and economy, broadcast live to a nationwide audience in Tunisia.
+                    </p>
                 </div>
             </div>
 
             <div class="video-card">
                 <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/ID_VIDEO_4" frameborder="0" allowfullscreen></iframe>
+                    <video controls preload="metadata">
+                        <source src="https://res.cloudinary.com/dhicihczs/video/upload/v1775903515/11042020_rwuaxn.mp4" type="video/mp4">
+                    </video>
                 </div>
                 <div class="video-info">
-                    <h3>Media Ethics Workshop</h3>
-                    <p>Educational video content designed for training professionals on regulatory compliance, media law, and ethical news gathering techniques.</p>
+                    <span class="vid-title">Integrated News Programming</span>
+                    <span class="vid-date">Broadcast Date: April 11, 2020</span>
+                    <p class="vid-description">
+                        Live anchoring of news bulletins covering social developments and sports, ensuring rapid and accurate information delivery.
+                    </p>
                 </div>
             </div>
 
         </div>
     </main>
-
 </body>
 </html>
