@@ -9,7 +9,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Segoe UI', sans-serif; background-color: #fff; color: #333; line-height: 1.6; overflow-x: hidden; }
 
-        /* --- STYLE DE LA BANNIÈRE (Cohérence Charte) --- */
+        /* --- STYLE DE LA BANNIÈRE --- */
         .grande-photo-banner {
             width: 100%; height: 500px;
             background: #001f3f url('image profil.png') center/cover no-repeat;
@@ -32,37 +32,38 @@
 
         /* --- PHRASE CLIGNOTANTE --- */
         .ai-disclaimer {
-            background: #f0faff;
-            color: #d11a2a; /* Rouge professionnel */
+            background: #fff4f4;
+            color: #d11a2a; 
             text-align: center;
-            padding: 10px;
+            padding: 12px;
             font-weight: bold;
             font-size: 0.9rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            animation: blink 2s infinite;
+            border-bottom: 1px solid #ffdcdc;
+            animation: blink 2.5s infinite;
         }
         @keyframes blink {
             0% { opacity: 1; }
-            50% { opacity: 0.3; }
+            50% { opacity: 0.4; }
             100% { opacity: 1; }
         }
 
         /* --- CONTENU --- */
-        .main-container { max-width: 1100px; margin: 0 auto; padding: 60px 20px; }
-        h2.section-title { font-size: 2.2rem; color: #003366; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        .main-container { max-width: 1200px; margin: 0 auto; padding: 60px 20px; }
+        h2.section-title { font-size: 2.2rem; color: #003366; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 40px; border-bottom: 2px solid #eee; padding-bottom: 10px; }
 
         /* --- GRILLE AI --- */
-        .ai-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 40px; }
-        .ai-card { background: #fdfdfd; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 1px solid #eaeaea; transition: 0.3s; }
-        .ai-card:hover { transform: translateY(-10px); border-color: #ffd700; }
-        .video-wrapper video { width: 100%; display: block; background: #000; }
+        .ai-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(480px, 1fr)); gap: 40px; }
+        .ai-card { background: #ffffff; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.08); border: 1px solid #eaeaea; transition: 0.3s ease; }
+        .ai-card:hover { transform: translateY(-10px); border-color: #00d1ff; box-shadow: 0 15px 40px rgba(0, 209, 255, 0.15); }
+        .video-wrapper video { width: 100%; display: block; background: #000; border-bottom: 1px solid #eee; }
 
         /* --- STYLES DES DONNÉES --- */
-        .ai-info { padding: 25px; }
-        .ai-tag { display: inline-block; background: #00d1ff; color: #000; font-size: 0.7rem; padding: 3px 10px; border-radius: 20px; font-weight: bold; margin-bottom: 10px; text-transform: uppercase; }
-        .vid-title { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: #003366; margin-bottom: 10px; display: block; font-weight: 700; }
-        .vid-description { font-family: 'Verdana', sans-serif; font-size: 0.95rem; color: #555; text-align: justify; line-height: 1.6; }
+        .ai-info { padding: 30px; }
+        .ai-tag { display: inline-block; background: #00d1ff; color: #000; font-size: 0.75rem; padding: 4px 12px; border-radius: 4px; font-weight: bold; margin-bottom: 15px; text-transform: uppercase; }
+        .vid-title { font-family: 'Playfair Display', serif; font-size: 1.7rem; color: #003366; margin-bottom: 12px; display: block; font-weight: 700; line-height: 1.2; }
+        .vid-description { font-family: 'Verdana', sans-serif; font-size: 0.95rem; color: #555; text-align: justify; line-height: 1.7; }
 
         @media (max-width: 850px) { .ai-grid { grid-template-columns: 1fr; } .main-name { font-size: 2.2rem; } }
     </style>
@@ -101,7 +102,6 @@
                 <div class="video-wrapper">
                     <video controls preload="metadata">
                         <source src="https://res.cloudinary.com/dhicihczs/video/upload/v1775905628/%D9%85%D8%BA%D8%A7%D8%B1%D8%A9_%D8%B9%D9%8A%D9%86_%D8%A7%D9%84%D8%B0%D9%87%D8%A8_eloiho.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
                     </video>
                 </div>
                 <div class="ai-info">
@@ -113,7 +113,22 @@
                 </div>
             </div>
 
+            <div class="ai-card">
+                <div class="video-wrapper">
+                    <video controls preload="metadata">
+                        <source src="https://res.cloudinary.com/dhicihczs/video/upload/v1775906472/earth_final_pki7w5.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="ai-info">
+                    <span class="ai-tag">AI Awareness Campaign</span>
+                    <span class="vid-title">Our Earth: A Planet Under Siege</span>
+                    <p class="vid-description">
+                        This AI-generated production explores the devastating impact of pollution on our planet. It serves as a visual wake-up call for the global population, highlighting the urgent need for collective environmental consciousness to preserve our only home for future generations.
+                    </p>
+                </div>
             </div>
+
+        </div>
     </main>
 
 </body>
