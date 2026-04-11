@@ -7,26 +7,49 @@
     <style>
         /* --- RESET & BASE STYLE --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', sans-serif; background-color: #fff; color: #333; line-height: 1.6; }
+        body { font-family: 'Segoe UI', sans-serif; background-color: #fff; color: #333; line-height: 1.6; overflow-x: hidden; }
 
-        /* --- BANNER --- */
+        /* --- STYLE DE LA BANNIÈRE (Mis à jour) --- */
         .grande-photo-banner {
-            width: 100%; height: 350px;
+            width: 100%; height: 500px;
             background: #001f3f url('image profil.png') center/cover no-repeat;
             display: flex; align-items: center; justify-content: center;
-            position: relative;
+            position: relative; text-align: center;
         }
-        .grande-photo-banner::after { content: ""; position: absolute; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.5); }
-        .grande-photo-banner h1 {
-            position: relative; z-index: 2; font-size: 3rem; color: white;
-            text-shadow: 0 5px 15px rgba(0,0,0,0.5); letter-spacing: 5px; text-transform: uppercase;
-            text-align: center; padding: 0 20px;
+        .grande-photo-banner::after { 
+            content: ""; position: absolute; top:0; left:0; width:100%; height:100%; 
+            background: rgba(0,0,0,0.5); 
+        }
+
+        .banner-content { position: relative; z-index: 2; }
+
+        .main-name {
+            font-size: 3.5rem; color: white;
+            text-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            letter-spacing: 8px; text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .journalist-line {
+            font-family: 'Georgia', serif; font-style: italic; font-size: 1.8rem;
+            color: #00d1ff; display: flex; align-items: center; justify-content: center; gap: 15px;
+            margin-bottom: 8px;
+        }
+
+        .mini-flag {
+            width: 35px; height: auto; border-radius: 4px;
+            box-shadow: 0 0 10px rgba(255,255,255,0.3); border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .strategist-line {
+            font-family: 'Verdana', sans-serif; font-weight: bold; font-size: 1.1rem;
+            color: #ffd700; letter-spacing: 4px; text-transform: uppercase;
         }
 
         /* --- NAVIGATION --- */
         nav { background: #1a1a1a; padding: 20px; text-align: center; position: sticky; top: 0; z-index: 1000; border-bottom: 2px solid #00d1ff; }
         nav a { color: rgba(255, 255, 255, 0.6); text-decoration: none; margin: 0 15px; font-weight: bold; transition: 0.3s; font-size: 0.85rem; }
-        nav a.active { color: #00d1ff; border-bottom: 2px solid #00d1ff; text-shadow: 0 0 8px #00d1ff; }
+        nav a.active { color: #00d1ff; border-bottom: 2px solid #00d1ff; text-shadow: 0 0 8px #00d1ff; padding-bottom: 5px; }
         nav a:hover { color: #00d1ff; }
 
         /* --- CONTENT GRID --- */
@@ -76,14 +99,24 @@
         @media (max-width: 900px) {
             .modal-box { flex-direction: column; }
             .modal-img-side { height: 40%; }
-            .grande-photo-banner h1 { font-size: 2rem; }
+            .main-name { font-size: 2.2rem; }
+            .journalist-line { font-size: 1.3rem; }
         }
     </style>
 </head>
 <body>
 
     <div class="grande-photo-banner">
-        <h1>Professional Certifications</h1>
+        <div class="banner-content">
+            <h1 class="main-name">Meher Ferchichi</h1>
+            <div class="sub-line journalist-line">
+                <span>TUNISIAN JOURNALIST</span>
+                <img src="https://flagcdn.com/w80/tn.png" alt="Tunisia Flag" class="mini-flag">
+            </div>
+            <div class="sub-line strategist-line">
+                DIGITAL CONTENT STRATEGIST
+            </div>
+        </div>
     </div>
 
     <nav>
@@ -100,62 +133,60 @@
         <h2 class="section-title">Verified Credentials</h2>
         
         <div class="grid-certifs">
-            
-            <div class="cert-card" onclick="ouvrirZoom('2.pdf', 'ASBU & EBU Academy', 'AI in the Service of News Quality. Training focused on AI applications in news, threats to media professions, ethical boundaries, and case studies of EBU/ASBU Cloud exchange systems[cite: 72, 79, 80, 83, 85].')">
-                <div style="height:100%; display:flex; align-items:center; justify-content:center; background:#f0f7ff; color:#003366; font-weight:bold; padding:20px; text-align:center;">AI News Quality (2023)</div>
+            <div class="cert-card" onclick="ouvrirZoom('2.pdf', 'ASBU & EBU Academy', 'AI in the Service of News Quality (2023). Focused on AI applications, ethical boundaries, and EBU/ASBU Cloud systems.')">
+                <div style="height:100%; display:flex; align-items:center; justify-content:center; background:#f0f7ff; color:#003366; font-weight:bold; padding:20px; text-align:center;">AI News Quality</div>
                 <div class="overlay"><strong>ASBU / EBU</strong><span>AI & News Quality</span></div>
             </div>
 
-            <div class="cert-card" onclick="ouvrirZoom('3.pdf', 'ASBU & EBU Academy', 'Artificial Intelligence and Combating Fake News. Key modules: Verifying AI content, geolocation using AI, Google Lens for image/video verification, and advanced Twitter search[cite: 91, 97, 98, 100, 101, 103].')">
-                <div style="height:100%; display:flex; align-items:center; justify-content:center; background:#fff0f0; color:#c00; font-weight:bold; padding:20px; text-align:center;">AI & Fake News (2024)</div>
+            <div class="cert-card" onclick="ouvrirZoom('3.pdf', 'ASBU & EBU Academy', 'AI and Combating Fake News (2024). Verifying AI content, geolocation, and Google Lens techniques.')">
+                <div style="height:100%; display:flex; align-items:center; justify-content:center; background:#fff0f0; color:#c00; font-weight:bold; padding:20px; text-align:center;">AI & Fake News</div>
                 <div class="overlay"><strong>ASBU / EBU</strong><span>AI vs Fake News</span></div>
             </div>
 
-            <div class="cert-card" onclick="ouvrirZoom('1.pdf', 'ASBU & EBU Academy', 'New Formats and Content for Generation Z. Explored Gen Z preferences, five steps for new content production, creativity enhancement, and strategic use of TikTok for media[cite: 54, 60, 61, 64, 65, 67].')">
-                <div style="height:100%; display:flex; align-items:center; justify-content:center; background:#f0fff0; color:#006600; font-weight:bold; padding:20px; text-align:center;">Gen Z Formats (2022)</div>
+            <div class="cert-card" onclick="ouvrirZoom('1.pdf', 'ASBU & EBU Academy', 'New Formats for Gen Z (2022). Explored preferences, content production, and TikTok strategy.')">
+                <div style="height:100%; display:flex; align-items:center; justify-content:center; background:#f0fff0; color:#006600; font-weight:bold; padding:20px; text-align:center;">Gen Z Formats</div>
                 <div class="overlay"><strong>ASBU / EBU</strong><span>Gen Z Content</span></div>
             </div>
 
-            <div class="cert-card" onclick="ouvrirZoom('7.jpeg', 'CAPJC & IOM', 'Media Treatment of Migration. Training conducted under the RDPP NA project, funded by the EU and implemented by the International Organization for Migration (OIM).')">
+            <div class="cert-card" onclick="ouvrirZoom('7.jpeg', 'CAPJC & IOM', 'Media Treatment of Migration. Training funded by the EU and implemented by OIM.')">
                 <img src="7.jpeg" alt="Migration Training">
                 <div class="overlay"><strong>CAPJC / OIM</strong><span>Migration Reporting</span></div>
             </div>
 
-            <div class="cert-card" onclick="ouvrirZoom('9.jpeg', 'ASBU & EBU Academy', 'Verification of Digital News (2020). Advanced techniques for monitoring social media, handling user-generated content (UGC), and ethical guidelines for digital journalism.')">
+            <div class="cert-card" onclick="ouvrirZoom('9.jpeg', 'ASBU & EBU Academy', 'Verification of Digital News (2020). Monitoring social media and UGC handling.')">
                 <img src="9.jpeg" alt="Verification 2020">
                 <div class="overlay"><strong>ASBU / EBU</strong><span>Digital Verification</span></div>
             </div>
 
-            <div class="cert-card" onclick="ouvrirZoom('12.jpeg', 'ASBU & EBU Academy', 'Resisting Fake News - Level 2 (2023). Deep dive into advanced image verification, sourcing through geolocation, and introduction to AI in the journalistic field.')">
+            <div class="cert-card" onclick="ouvrirZoom('12.jpeg', 'ASBU & EBU Academy', 'Resisting Fake News - Level 2 (2023). Geolocation and advanced verification.')">
                 <img src="12.jpeg" alt="Fake News Lvl 2">
-                <div class="overlay"><strong>ASBU / EBU</strong><span>Fake News (Level 2)</span></div>
+                <div class="overlay"><strong>ASBU / EBU</strong><span>Fake News (Lvl 2)</span></div>
             </div>
 
-            <div class="cert-card" onclick="ouvrirZoom('Benevolat ONU.jpeg', 'ITU - United Nations', 'Summit Assistant Certificate for the World Summit on the Information Society (WSIS Tunis 2005). Professional contribution to global international governance.')">
+            <div class="cert-card" onclick="ouvrirZoom('Benevolat ONU.jpeg', 'ITU - United Nations', 'Summit Assistant for the WSIS Tunis 2005.')">
                 <img src="Benevolat ONU.jpeg" alt="UN Volunteer">
                 <div class="overlay"><strong>ITU - United Nations</strong><span>WSIS Global Summit</span></div>
             </div>
 
-            <div class="cert-card" onclick="ouvrirZoom('Data journalism.jpeg', 'Deutsche Welle & EU', 'Foundations of Data Journalism. Intensive training on data analysis, visualization, and storytelling supported by the European Union.')">
+            <div class="cert-card" onclick="ouvrirZoom('Data journalism.jpeg', 'Deutsche Welle & EU', 'Foundations of Data Journalism. Supported by the EU.')">
                 <img src="Data journalism.jpeg" alt="Data Journalism">
-                <div class="overlay"><strong>Deutsche Welle / EU</strong><span>Data Journalism</span></div>
+                <div class="overlay"><strong>DW / EU</strong><span>Data Journalism</span></div>
             </div>
 
-            <div class="cert-card" onclick="ouvrirZoom('DCAF.jpeg', 'DCAF Geneva', 'Capacity building in popularizing legal and judicial information for journalists, organized by the Geneva Centre for Security Sector Governance.')">
+            <div class="cert-card" onclick="ouvrirZoom('DCAF.jpeg', 'DCAF Geneva', 'Capacity building in popularizing legal information.')">
                 <img src="DCAF.jpeg" alt="DCAF Geneva">
                 <div class="overlay"><strong>DCAF Geneva</strong><span>Legal Information</span></div>
             </div>
 
-            <div class="cert-card" onclick="ouvrirZoom('Geopolitique.jpeg', 'Friedrich Naumann Foundation', 'Specialized training in Journalism, International Relations, and Geopolitical Conflicts.')">
+            <div class="cert-card" onclick="ouvrirZoom('Geopolitique.jpeg', 'Friedrich Naumann Foundation', 'Specialized training in Journalism and Geopolitics.')">
                 <img src="Geopolitique.jpeg" alt="Geopolitics">
                 <div class="overlay"><strong>Friedrich Naumann</strong><span>Geopolitics</span></div>
             </div>
 
-            <div class="cert-card" onclick="ouvrirZoom('RFI actualité politique.jpeg', 'RFI & Monte Carlo Doualiya', 'Stage on Political News Coverage: reporting and debate techniques. Professional broadcasting development.')">
+            <div class="cert-card" onclick="ouvrirZoom('RFI actualité politique.jpeg', 'RFI & Monte Carlo Doualiya', 'Stage on Political News Coverage.')">
                 <img src="RFI actualité politique.jpeg" alt="RFI">
                 <div class="overlay"><strong>RFI / MCD</strong><span>Political Reporting</span></div>
             </div>
-
         </div>
     </main>
 
@@ -182,8 +213,6 @@
         function ouvrirZoom(src, titre, desc) {
             const imgZoom = document.getElementById('imgZoom');
             const pdfZoom = document.getElementById('pdfZoom');
-            
-            // Reset display
             imgZoom.style.display = 'none';
             pdfZoom.style.display = 'none';
 
@@ -202,7 +231,7 @@
 
         function fermerZoom() {
             document.getElementById('zoneZoom').style.display = 'none';
-            document.getElementById('pdfZoom').src = ""; // Stop PDF loading
+            document.getElementById('pdfZoom').src = "";
         }
     </script>
 </body>
