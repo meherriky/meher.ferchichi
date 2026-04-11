@@ -9,6 +9,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Montserrat', sans-serif; background-color: #f4f7f9; color: #333; line-height: 1.6; }
 
+        /* --- BANNIÈRE --- */
         .grande-photo-banner {
             width: 100%; height: 400px;
             background: #001f3f url('image profil.png') center/cover no-repeat;
@@ -19,10 +20,12 @@
         .banner-content { position: relative; z-index: 2; color: white; }
         .main-name { font-size: 3rem; letter-spacing: 5px; text-transform: uppercase; font-family: 'Playfair Display', serif; }
 
+        /* --- NAVIGATION --- */
         nav { background: #1a1a1a; padding: 20px; text-align: center; position: sticky; top: 0; z-index: 1000; border-bottom: 2px solid #00d1ff; }
         nav a { color: rgba(255, 255, 255, 0.6); text-decoration: none; margin: 0 15px; font-weight: bold; font-size: 0.85rem; transition: 0.3s; }
         nav a.active { color: #00d1ff; border-bottom: 2px solid #00d1ff; padding-bottom: 5px; }
 
+        /* --- GRILLE --- */
         .main-container { max-width: 1100px; margin: 0 auto; padding: 60px 20px; }
         .cert-grid { display: grid; grid-template-columns: 1fr; gap: 50px; }
 
@@ -36,25 +39,72 @@
             border: 1px solid #eaeaea;
         }
 
-        .cert-image { background: #eee; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-        .cert-image img { width: 100%; height: 100%; object-fit: cover; }
+        /* --- EFFET DE SURVOL (NOUVEAU) --- */
+        .cert-image { 
+            background: #eee; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            overflow: hidden; 
+            cursor: pointer; /* Indique que c'est cliquable */
+        }
+        .cert-image img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            transition: transform 0.5s ease; 
+        }
+        .cert-image:hover img { 
+            transform: scale(1.1); /* Zoom au survol */
+        }
 
         .cert-info { padding: 40px; }
         .cert-title { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: #001f3f; margin-bottom: 10px; }
         .cert-org { font-weight: 600; color: #00d1ff; text-transform: uppercase; letter-spacing: 1px; font-size: 0.9rem; margin-bottom: 5px; display: block; }
         .cert-date { font-style: italic; color: #888; margin-bottom: 20px; display: block; font-size: 0.9rem; }
-        
         .cert-desc { font-size: 0.95rem; margin-bottom: 20px; text-align: justify; color: #555; }
-        
         .competencies-title { font-weight: 700; font-size: 0.9rem; text-transform: uppercase; margin-bottom: 10px; color: #333; }
         .competencies-list { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
         .competencies-list li { font-size: 0.85rem; padding-left: 15px; position: relative; color: #666; }
         .competencies-list li::before { content: "◆"; position: absolute; left: 0; color: #00d1ff; font-weight: bold; }
 
+        /* --- STYLE DE LA FENÊTRE MODALE (NOUVEAU) --- */
+        .modal {
+            display: none; /* Caché par défaut */
+            position: fixed;
+            z-index: 2000;
+            padding-top: 50px;
+            left: 0; top: 0;
+            width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            text-align: center;
+        }
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 80%;
+            max-height: 80%;
+            border: 3px solid #00d1ff;
+            border-radius: 10px;
+        }
+        .close-modal {
+            position: absolute;
+            top: 20px; right: 35px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
         @media (max-width: 900px) { .cert-card { grid-template-columns: 1fr; } .cert-image { height: 250px; } }
     </style>
 </head>
 <body>
+
+    <div id="imageModal" class="modal">
+        <span class="close-modal">&times;</span>
+        <img class="modal-content" id="imgFull">
+    </div>
 
     <div class="grande-photo-banner">
         <div class="banner-content">
@@ -77,126 +127,54 @@
         <div class="cert-grid">
 
             <div class="cert-card">
-                <div class="cert-image"><img src="Benevolat ONU.jpg" alt="SMSI Certification"></div>
+                <div class="cert-image" onclick="openModal('Benevolat ONU.jpg')">
+                    <img src="Benevolat ONU.jpg" alt="SMSI Certification">
+                </div>
                 <div class="cert-info">
-                    <span class="cert-org">International Telecommunication Union (ITU) / United Nations</span>
-                    <h2 class="cert-title">Contribution to the World Summit on the Information Society (WSIS)</h2>
+                    <span class="cert-org">International Telecommunication Union (ITU)</span>
+                    <h2 class="cert-title">World Summit on the Information Society (WSIS)</h2>
                     <span class="cert-date">November 2005</span>
-                    <p class="cert-desc">Official certification testifying to early engagement in global information governance as a Summit Assistant during the second phase of WSIS in Tunis[cite: 39, 42].</p>
-                    <div class="competencies-title">Acquired Soft Skills:</div>
-                    <ul class="competencies-list">
-                        <li>International Protocol Mastery [cite: 45]</li>
-                        <li>Global Information Vision [cite: 47]</li>
-                        <li>Operational Rigor [cite: 48]</li>
-                        <li>UN Diplomatic Standards [cite: 45]</li>
-                    </ul>
+                    <p class="cert-desc">Official certification testifying to early engagement in global information governance during the phase of WSIS in Tunis.</p>
                 </div>
             </div>
 
             <div class="cert-card">
-                <div class="cert-image"><img src="RFI actualité politique.jpg" alt="RFI Certification"></div>
+                <div class="cert-image" onclick="openModal('RFI actualité politique.jpg')">
+                    <img src="RFI actualité politique.jpg" alt="RFI Certification">
+                </div>
                 <div class="cert-info">
-                    <span class="cert-org">Radio France Internationale (RFI) & Monte Carlo Doualiya (MCD)</span>
-                    <h2 class="cert-title">Professional Certification in Political Journalism & Media Debate</h2>
-                    <span class="cert-date">April - May 2011</span>
-                    <p class="cert-desc">Intensive program focused on "Political News Coverage: Reporting and Debate" conducted during a pivotal historical period in Tunis[cite: 50, 54].</p>
-                    <div class="competencies-title">Core Competencies:</div>
-                    <ul class="competencies-list">
-                        <li>Advanced Political Reporting [cite: 56]</li>
-                        <li>Editorial Leadership in Debates [cite: 57]</li>
-                        <li>International Standards Integration [cite: 58]</li>
-                        <li>Crisis Communication Management [cite: 59]</li>
-                    </ul>
+                    <span class="cert-org">RFI & Monte Carlo Doualiya</span>
+                    <h2 class="cert-title">Political Journalism & Media Debate</h2>
+                    <span class="cert-date">2011</span>
+                    <p class="cert-desc">Intensive program focused on political news coverage during a pivotal period.</p>
                 </div>
             </div>
 
-            <div class="cert-card">
-                <div class="cert-image"><img src="DCAF.jpg" alt="DCAF Certification"></div>
-                <div class="cert-info">
-                    <span class="cert-org">Geneva Centre for Security Sector Governance (DCAF)</span>
-                    <h2 class="cert-title">Specialist Certification in Judicial & Legal Information Dissemination</h2>
-                    <span class="cert-date">October - November 2018</span>
-                    <p class="cert-desc">Validation of expertise in popularizing legal and judicial information for the general public while maintaining technical accuracy[cite: 60, 63, 66].</p>
-                    <div class="competencies-title">Core Competencies:</div>
-                    <ul class="competencies-list">
-                        <li>Legal Journalism & Popularization [cite: 66]</li>
-                        <li>Media Governance & Rule of Law [cite: 68]</li>
-                        <li>Regulatory Compliance (HAICA/ISIE) [cite: 69]</li>
-                        <li>Ethical Reporting on Security [cite: 70]</li>
-                    </ul>
-                </div>
             </div>
-
-            <div class="cert-card">
-                <div class="cert-image"><img src="radio numérique.jpg" alt="Digital Radio Journalism"></div>
-                <div class="cert-info">
-                    <span class="cert-org">CAPJC (Tunisian Prime Minister's Office)</span>
-                    <h2 class="cert-title">Professional Certification in Digital Radio Journalism</h2>
-                    <span class="cert-date">May 14-18, 2007</span>
-                    <p class="cert-desc">Advanced training session in "Journalisme Radio Numérique" certifying early mastery of digital broadcasting tools and production workflows[cite: 71, 74, 75].</p>
-                    <div class="competencies-title">Core Competencies:</div>
-                    <ul class="competencies-list">
-                        <li>Digital Audio Workflow [cite: 77]</li>
-                        <li>Modern Newsroom Integration [cite: 78]</li>
-                        <li>Technical Production Proficiency [cite: 79]</li>
-                        <li>Early Tech Adoption [cite: 80]</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="cert-card">
-                <div class="cert-image"><img src="redaction radio.jpg" alt="Radio Writing"></div>
-                <div class="cert-info">
-                    <span class="cert-org">CAPJC & Ministry of Communication</span>
-                    <h2 class="cert-title">Professional Certification in Radio News Writing & Presentation</h2>
-                    <span class="cert-date">February 08-13, 2010</span>
-                    <p class="cert-desc">Validated mastery of "La rédaction de l'information présentée à la radio", focusing on creating concise and impactful scripts for oral delivery[cite: 82, 85, 86].</p>
-                    <div class="competencies-title">Core Competencies:</div>
-                    <ul class="competencies-list">
-                        <li>Radio Scriptwriting & Rhythm [cite: 89]</li>
-                        <li>Editorial Synthesis [cite: 90]</li>
-                        <li>Information Structure & Flow [cite: 91]</li>
-                        <li>Live Professional Delivery [cite: 92]</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="cert-card">
-                <div class="cert-image"><img src="data journalism.jpg" alt="Data Journalism"></div>
-                <div class="cert-info">
-                    <span class="cert-org">European Union & DW Akademie</span>
-                    <h2 class="cert-title">Advanced Training in Data Journalism Fundamentals</h2>
-                    <span class="cert-date">February 2019</span>
-                    <p class="cert-desc">Production-based training certifying proficiency in extracting insights from complex datasets and creating visual news stories[cite: 94, 97, 98].</p>
-                    <div class="competencies-title">Core Competencies:</div>
-                    <ul class="competencies-list">
-                        <li>Data Analysis & Interpretation [cite: 101]</li>
-                        <li>Information Visualization [cite: 102]</li>
-                        <li>Evidence-Based Storytelling [cite: 103]</li>
-                        <li>Digital Transformation Leadership [cite: 104]</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="cert-card">
-                <div class="cert-image"><img src="AI and Combating Fake News.jpg" alt="AI Journalism"></div>
-                <div class="cert-info">
-                    <span class="cert-org">ASBU & EBU Academy</span>
-                    <h2 class="cert-title">Artificial Intelligence in Journalism & News Quality</h2>
-                    <span class="cert-date">2023 - 2024</span>
-                    <p class="cert-desc">Specialized certification on integrating AI tools to enhance editorial quality, fact-checking, and digital news verification in modern newsrooms.</p>
-                    <div class="competencies-title">Core Competencies:</div>
-                    <ul class="competencies-list">
-                        <li>AI News Integration</li>
-                        <li>Digital Verification</li>
-                        <li>Automated Content Strategy</li>
-                        <li>Newsroom Quality Oversight</li>
-                    </ul>
-                </div>
-            </div>
-
-        </div>
     </main>
+
+    <script>
+        // Fonction pour ouvrir la fenêtre modale
+        function openModal(imgSrc) {
+            var modal = document.getElementById("imageModal");
+            var modalImg = document.getElementById("imgFull");
+            modal.style.display = "block";
+            modalImg.src = imgSrc;
+        }
+
+        // Fermer la fenêtre au clic sur le X
+        document.querySelector(".close-modal").onclick = function() {
+            document.getElementById("imageModal").style.display = "none";
+        }
+
+        // Fermer la fenêtre au clic à l'extérieur de l'image
+        window.onclick = function(event) {
+            var modal = document.getElementById("imageModal");
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
 
 </body>
 </html>
