@@ -4,86 +4,104 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AUDIO PRODUCTION - MEHER FERCHICHI</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        /* --- STYLE DE BASE --- */
+        /* --- RESET & STYLE DE BASE --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Montserrat', sans-serif; background-color: #f8f9fa; color: #333; line-height: 1.6; }
+        body { font-family: 'Montserrat', sans-serif; background-color: #f4f7f9; color: #333; line-height: 1.6; overflow-x: hidden; }
 
-        /* --- BANNIÈRE (Identique aux autres pages) --- */
+        /* --- STYLE DE LA BANNIÈRE (RESPONSIVE) --- */
         .grande-photo-banner {
-            width: 100%; height: 450px;
+            width: 100%; height: 400px;
             background: #001f3f url('image profil.png') center/cover no-repeat;
             display: flex; align-items: center; justify-content: center;
             position: relative; text-align: center;
         }
-        .grande-photo-banner::after { content: ""; position: absolute; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.5); }
-        .banner-content { position: relative; z-index: 2; color: white; }
-        .main-name { font-size: 3rem; letter-spacing: 5px; text-transform: uppercase; font-family: 'Playfair Display', serif; }
+        .grande-photo-banner::after { 
+            content: ""; position: absolute; top:0; left:0; width:100%; height:100%; 
+            background: rgba(0,0,0,0.5); 
+        }
+        .banner-content { position: relative; z-index: 2; color: white; padding: 0 20px; }
+        .main-name { font-size: 3.5rem; letter-spacing: 8px; text-transform: uppercase; margin-bottom: 10px; font-family: 'Playfair Display', serif; }
+        .banner-sub { font-size: 1.2rem; color: #00d1ff; font-weight: 300; letter-spacing: 3px; }
 
-        /* --- NAVIGATION --- */
-        nav { background: #1a1a1a; padding: 20px; text-align: center; position: sticky; top: 0; z-index: 1000; border-bottom: 2px solid #00d1ff; }
-        nav a { color: rgba(255, 255, 255, 0.6); text-decoration: none; margin: 0 15px; font-weight: bold; font-size: 0.85rem; transition: 0.3s; }
+        /* --- NAVIGATION (RESPONSIVE) --- */
+        nav { 
+            background: #1a1a1a; padding: 20px; text-align: center; position: sticky; 
+            top: 0; z-index: 1000; border-bottom: 2px solid #00d1ff; 
+        }
+        nav a { color: rgba(255, 255, 255, 0.6); text-decoration: none; margin: 0 15px; font-weight: bold; transition: 0.3s; font-size: 0.85rem; }
         nav a.active { color: #00d1ff; border-bottom: 2px solid #00d1ff; padding-bottom: 5px; }
 
-        /* --- GRILLE AUDIO --- */
+        /* --- CONTENU --- */
         .main-container { max-width: 1200px; margin: 0 auto; padding: 60px 20px; }
-        .audio-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; }
+        
+        /* --- GRILLE AUDIO (FLEXIBLE) --- */
+        .audio-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
+            gap: 30px; 
+        }
 
         /* --- DESIGN DU PLAYER AUDIO --- */
         .audio-card {
             background: #ffffff;
             padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
-            border: 1px solid #eee;
-            transition: transform 0.3s ease;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border: 1px solid #eaeaea;
+            transition: 0.3s ease;
+            display: flex;
+            flex-direction: column;
         }
-        .audio-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0, 209, 255, 0.1); }
+        .audio-card:hover { transform: translateY(-5px); border-color: #00d1ff; }
 
         .custom-player {
             width: 100%;
-            height: 50px;
-            border-radius: 30px;
-            background: linear-gradient(90deg, #001f3f, #00d1ff);
-            padding: 5px;
+            background: #001f3f;
+            border-radius: 10px;
+            padding: 10px;
             margin-bottom: 20px;
         }
-        audio { width: 100%; height: 40px; filter: invert(100%) hue-rotate(180deg) brightness(1.5); }
+        audio { width: 100%; height: 40px; }
 
-        /* --- STYLES DES TEXTES --- */
+        /* --- TEXTES --- */
         .audio-title {
             font-family: 'Playfair Display', serif;
             font-size: 1.4rem;
-            color: #003366;
-            margin-bottom: 10px;
-            display: block;
+            color: #001f3f;
+            margin-bottom: 8px;
+            font-weight: 700;
         }
-
         .broadcast-date {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 500;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: #00d1ff;
+            font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            display: block;
+            letter-spacing: 1px;
             margin-bottom: 15px;
-            padding-bottom: 5px;
-            border-bottom: 1px dashed #ddd;
+            display: block;
         }
-
         .audio-description {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 300;
-            font-size: 0.95rem;
-            color: #666;
+            font-size: 0.9rem;
+            color: #555;
             text-align: justify;
+            line-height: 1.6;
         }
 
-        @media (max-width: 850px) {
+        /* --- ADAPTATION MOBILE --- */
+        @media (max-width: 768px) {
+            .grande-photo-banner { height: 280px; }
+            .main-name { font-size: 1.8rem; letter-spacing: 3px; }
+            .banner-sub { font-size: 0.9rem; }
+            
+            nav { overflow-x: auto; white-space: nowrap; padding: 15px 10px; display: flex; justify-content: flex-start; }
+            nav a { margin: 0 10px; font-size: 0.75rem; flex-shrink: 0; }
+            
+            .main-container { padding: 30px 15px; }
             .audio-grid { grid-template-columns: 1fr; }
-            .main-name { font-size: 2.2rem; }
+            .audio-card { padding: 20px; }
+            .audio-title { font-size: 1.2rem; }
         }
     </style>
 </head>
@@ -92,7 +110,7 @@
     <div class="grande-photo-banner">
         <div class="banner-content">
             <h1 class="main-name">Meher Ferchichi</h1>
-            <p>AUDIO PRODUCTION PORTFOLIO</p>
+            <p class="banner-sub">AUDIO PRODUCTION PORTFOLIO</p>
         </div>
     </div>
 
@@ -116,7 +134,7 @@
                 <span class="audio-title">Arab Summit 2019 Coverage - Part 1</span>
                 <span class="broadcast-date">Broadcast: March 27, 2019</span>
                 <p class="audio-description">
-                    Daily news reports during the 2019 Arab Summit in Tunis. Featuring interviews and statements from Arab officials and politicians, along with coverage of key preparatory events[cite: 24, 25, 26].
+                    Daily news reports during the 2019 Arab Summit in Tunis. Featuring interviews and statements from Arab officials and politicians.
                 </p>
             </div>
 
@@ -127,7 +145,7 @@
                 <span class="audio-title">Arab Summit 2019 Coverage - Part 2</span>
                 <span class="broadcast-date">Broadcast: March 29, 2019</span>
                 <p class="audio-description">
-                    In-depth audio news reporting on the Arab Summit hosted in Tunis, including exclusive dialogues with political figures and live updates on summit proceedings[cite: 27, 28, 29].
+                    In-depth audio news reporting on the Arab Summit hosted in Tunis, including exclusive dialogues with political figures.
                 </p>
             </div>
 
@@ -135,10 +153,10 @@
                 <div class="custom-player">
                     <audio controls><source src="son sommet 30.mp3" type="audio/mpeg"></audio>
                 </div>
-                <span class="audio-title">Arab Summit 2019 Coverage - Final Report</span>
+                <span class="audio-title">Arab Summit 2019 - Final Report</span>
                 <span class="broadcast-date">Broadcast: March 31, 2019</span>
                 <p class="audio-description">
-                    Comprehensive daily news reports from the Arab Summit held in the capital, Tunis. Capturing the final statements and key highlights of the diplomatic gathering[cite: 30, 31, 32].
+                    Comprehensive daily news reports capturing the final statements and key highlights of the diplomatic gathering in Tunis.
                 </p>
             </div>
 
@@ -149,7 +167,7 @@
                 <span class="audio-title">World Radio Day Celebration</span>
                 <span class="broadcast-date">Broadcast: February 13, 2014</span>
                 <p class="audio-description">
-                    A special audio news report commemorating the second anniversary of World Radio Day, celebrating the global impact of the medium[cite: 33, 34, 37].
+                    A special audio news report commemorating the anniversary of World Radio Day, celebrating the global impact of the medium.
                 </p>
             </div>
 
@@ -160,7 +178,7 @@
                 <span class="audio-title">Tunisian Radio 80th Anniversary</span>
                 <span class="broadcast-date">Broadcast: October 15, 2018</span>
                 <p class="audio-description">
-                    An investigative audio report dedicated to the 80th anniversary of the founding of Tunisian Radio, tracing its historic journey and legacy[cite: 35, 36, 38].
+                    An investigative audio report dedicated to the 80th anniversary of Tunisian Radio, tracing its historic legacy.
                 </p>
             </div>
 
