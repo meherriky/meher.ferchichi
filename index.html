@@ -4,77 +4,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WELCOME - MEHER FERCHICHI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         /* --- RESET & STYLE DE BASE --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', sans-serif; background-color: #fff; color: #333; line-height: 1.8; overflow-x: hidden; }
+        body { font-family: 'Montserrat', sans-serif; background-color: #fff; color: #333; line-height: 1.8; overflow-x: hidden; }
 
         /* --- STYLE DE LA BANNIÈRE --- */
         .grande-photo-banner {
-            width: 100%; height: 500px; /* Un peu plus haut pour les 3 lignes */
+            width: 100%; height: 100vh; /* Pleine hauteur pour l'accueil */
+            min-height: 500px;
             background: #001f3f url('image profil.png') center/cover no-repeat;
             display: flex; align-items: center; justify-content: center;
             position: relative; text-align: center;
         }
-        /* Voile sombre pour lire le texte */
         .grande-photo-banner::after { 
             content: ""; position: absolute; top:0; left:0; width:100%; height:100%; 
-            background: rgba(0,0,0,0.5); 
+            background: rgba(0,0,0,0.6); 
         }
 
-        .banner-content { position: relative; z-index: 2; }
+        .banner-content { position: relative; z-index: 2; padding: 0 20px; }
 
-        /* Ligne 1 : Nom et Prénom */
         .main-name {
-            font-size: 3.5rem; color: white;
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem; color: white;
             text-shadow: 0 5px 15px rgba(0,0,0,0.5);
             letter-spacing: 8px; text-transform: uppercase;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+            opacity: 0;
+            animation: fadeInUp 1.2s ease-out forwards;
         }
 
-        /* Ligne 2 : Tunisian Journalist */
         .journalist-line {
-            font-family: 'Georgia', serif; 
-            font-style: italic;
             font-size: 1.8rem;
-            color: #00d1ff; /* Bleu néon */
+            color: #00d1ff;
             display: flex; align-items: center; justify-content: center; gap: 15px;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
+            opacity: 0;
+            animation: fadeInUp 1.2s ease-out 0.4s forwards;
         }
 
         .mini-flag {
-            width: 35px; height: auto;
+            width: 40px; height: auto;
             border-radius: 4px;
-            box-shadow: 0 0 10px rgba(255,255,255,0.3);
-            border: 1px solid rgba(255,255,255,0.2);
+            box-shadow: 0 0 15px rgba(0,209,255,0.4);
         }
 
-        /* Ligne 3 : Strategist */
         .strategist-line {
-            font-family: 'Verdana', sans-serif;
-            font-weight: bold;
+            font-weight: 600;
             font-size: 1.1rem;
-            color: #ffd700; /* Or */
-            letter-spacing: 4px;
+            color: #ffd700;
+            letter-spacing: 5px;
             text-transform: uppercase;
-        }
-
-        /* --- ANIMATION (Spécifique à l'Index) --- */
-        .home-page .banner-content {
-            animation: fadeInUp 1.8s ease-out forwards;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(40px);
-                filter: blur(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-                filter: blur(0);
-            }
+            opacity: 0;
+            animation: fadeInUp 1.2s ease-out 0.8s forwards;
         }
 
         /* --- NAVIGATION --- */
@@ -82,64 +65,74 @@
             background: #1a1a1a; padding: 20px; text-align: center; 
             position: sticky; top: 0; z-index: 1000; border-bottom: 2px solid #00d1ff; 
         }
-        
         nav a { 
             color: rgba(255, 255, 255, 0.6); 
             text-decoration: none; 
             margin: 0 15px; 
             font-weight: bold; 
-            transition: 0.3s;
             font-size: 0.85rem;
+            transition: 0.3s;
         }
-
-        nav a.active { 
-            color: #00d1ff; 
-            text-shadow: 0 0 10px rgba(0, 209, 255, 0.8);
-            border-bottom: 2px solid #00d1ff;
-            padding-bottom: 5px;
-        }
-
+        nav a.active { color: #00d1ff; border-bottom: 2px solid #00d1ff; padding-bottom: 5px; }
         nav a:hover { color: #00d1ff; }
 
+        /* --- ANIMATIONS --- */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); filter: blur(5px); }
+            to { opacity: 1; transform: translateY(0); filter: blur(0); }
+        }
+
         /* --- CONTENU --- */
-        .main-container { max-width: 1000px; margin: 0 auto; padding: 60px 20px; }
+        .main-container { max-width: 900px; margin: 0 auto; padding: 80px 25px; }
 
         h2.section-title { 
-            font-size: 2.2rem; color: #003366; margin-bottom: 15px; 
-            font-weight: 800; text-transform: uppercase;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem; color: #001f3f; margin-bottom: 25px; 
+            text-transform: uppercase; text-align: center;
         }
 
         .highlight-box { 
-            background: rgba(0, 100, 0, 0.05); 
+            background: #f0f7f0; 
             border-left: 5px solid #006400; 
-            padding: 25px; margin: 30px 0; border-radius: 0 5px 5px 0; 
+            padding: 30px; margin: 40px 0; border-radius: 0 8px 8px 0; 
         }
 
-        .signature { margin-top: 40px; text-align: right; padding-right: 20px; }
+        .intro-text { font-size: 1.2rem; line-height: 2; color: #444; text-align: justify; }
 
+        .signature { margin-top: 60px; text-align: right; }
+        .sig-name { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: #cc0000; font-style: italic; margin: 0; }
+        .sig-title { color: #888; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; font-weight: bold; }
+
+        /* --- RESPONSIVE --- */
         @media (max-width: 768px) { 
-            .main-name { font-size: 2.2rem; }
-            .journalist-line { font-size: 1.3rem; }
-            nav a { margin: 5px 8px; font-size: 0.75rem; }
+            .main-name { font-size: 2.5rem; letter-spacing: 4px; }
+            .journalist-line { font-size: 1.2rem; }
+            .strategist-line { font-size: 0.8rem; letter-spacing: 3px; }
+            .grande-photo-banner { height: 70vh; }
+            
+            nav { overflow-x: auto; white-space: nowrap; padding: 15px 10px; display: flex; justify-content: flex-start; }
+            nav a { margin: 0 10px; font-size: 0.75rem; flex-shrink: 0; }
+            
+            h2.section-title { font-size: 2rem; }
         }
     </style>
 </head>
-<body class="home-page">
+<body>
 
-    <div class="grande-photo-banner">
+    <header class="grande-photo-banner">
         <div class="banner-content">
             <h1 class="main-name">Meher Ferchichi</h1>
             
-            <div class="sub-line journalist-line">
+            <div class="journalist-line">
                 <span>TUNISIAN JOURNALIST</span>
                 <img src="https://flagcdn.com/w80/tn.png" alt="Tunisia Flag" class="mini-flag">
             </div>
             
-            <div class="sub-line strategist-line">
+            <div class="strategist-line">
                 DIGITAL CONTENT STRATEGIST
             </div>
         </div>
-    </div>
+    </header>
 
     <nav>
         <a href="index.html" class="active">HOME</a>
@@ -153,39 +146,31 @@
 
     <main class="main-container">
         <section>
-            <h2 class="section-title">Welcome!</h2>
+            <h2 class="section-title">Welcome</h2>
             
-            <p style="font-size: 1.25rem; color: #000; margin-bottom: 25px;">
-                I am a <strong>Digital Content Strategist</strong> and <strong>Media Governance Expert</strong> with over 20 years of experience.
+            <p class="intro-text" style="font-weight: 600; color: #001f3f; text-align: center; margin-bottom: 30px;">
+                Expert in Media Governance & Digital Transformation with over 20 years of excellence.
             </p>
 
             <div class="highlight-box">
-                <p style="margin: 0; color: #006400; font-size: 1.2rem; font-style: italic; font-weight: 600;">
-                    "Navigating the intersection of media innovation and regulatory compliance."
+                <p style="margin: 0; color: #004d00; font-size: 1.25rem; font-style: italic; text-align: center;">
+                    "Bridging the gap between traditional journalistic integrity and modern technological innovation."
                 </p>
             </div>
 
-            <div style="color: #000; font-size: 1.15rem; line-height: 1.9;">
-                <p style="margin-bottom: 20px; text-align: justify;">
-                    Throughout my career at <strong>Radio Tunisienne</strong>, I have dedicated myself to driving Digital Transformation, mastering Mobile Journalism (MoJo), and ensuring strict adherence to Media Ethics and Governance.
+            <div class="intro-text">
+                <p style="margin-bottom: 25px;">
+                    During my extensive career at <strong>Radio Tunisienne</strong>, I have spearheaded digital evolution by mastering <strong>Mobile Journalism (MoJo)</strong> and ensuring rigorous <strong>Media Compliance</strong>.
                 </p>
                 
-                <p style="margin-bottom: 20px; text-align: justify;">
-                    From orchestrating international event coverage to implementing AI-driven news quality standards, my work focuses on building a credible, forward-thinking media ecosystem.
-                </p>
-
-                <p style="margin-top: 30px; font-weight: bold; color: #003366; font-size: 1.2rem;">
-                    Welcome aboard!
+                <p>
+                    From directing international media coverage to implementing <strong>AI-driven</strong> editorial standards, my mission is to build a modern, credible, and innovative media landscape.
                 </p>
             </div>
 
             <div class="signature">
-                <p style="font-family: 'Georgia', serif; font-size: 2.2rem; color: #CC0000; font-style: italic; margin: 0;">
-                    Meher Ferchichi
-                </p>
-                <p style="color: #666; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; font-weight: bold;">
-                    Media Governance Expert
-                </p>
+                <p class="sig-name">Meher Ferchichi</p>
+                <p class="sig-title">Media Governance Expert</p>
             </div>
         </section>
     </main>
