@@ -6,17 +6,35 @@
     <title>CERTIFICATIONS - MEHER FERCHICHI</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
+        /* --- RESET & STYLE DE BASE --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Montserrat', sans-serif; background-color: #f4f7f9; color: #333; line-height: 1.6; }
+        body { font-family: 'Montserrat', sans-serif; background-color: #f4f7f9; color: #333; line-height: 1.6; overflow-x: hidden; }
 
-        /* --- NAVIGATION --- */
-        nav { background: #1a1a1a; padding: 20px; text-align: center; position: sticky; top: 0; z-index: 1000; border-bottom: 2px solid #00d1ff; }
+        /* --- BANNIÈRE --- */
+        .grande-photo-banner {
+            width: 100%; height: 400px;
+            background: #001f3f url('image profil.png') center/cover no-repeat;
+            display: flex; align-items: center; justify-content: center;
+            position: relative; text-align: center;
+        }
+        .grande-photo-banner::after { content: ""; position: absolute; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.5); }
+        .banner-content { position: relative; z-index: 2; color: white; padding: 0 20px; }
+        .main-name { font-size: 3.5rem; letter-spacing: 5px; text-transform: uppercase; font-family: 'Playfair Display', serif; }
+        .banner-sub { font-size: 1.2rem; color: #00d1ff; font-weight: 300; letter-spacing: 2px; }
+
+        /* --- NAVIGATION (RESPONSIVE) --- */
+        nav { 
+            background: #1a1a1a; padding: 20px; text-align: center; position: sticky; 
+            top: 0; z-index: 1000; border-bottom: 2px solid #00d1ff; 
+        }
         nav a { color: rgba(255, 255, 255, 0.6); text-decoration: none; margin: 0 15px; font-weight: bold; font-size: 0.85rem; transition: 0.3s; }
         nav a.active { color: #00d1ff; border-bottom: 2px solid #00d1ff; padding-bottom: 5px; }
 
+        /* --- CONTENEUR --- */
         .main-container { max-width: 1100px; margin: 0 auto; padding: 60px 20px; }
-        .cert-grid { display: grid; grid-template-columns: 1fr; gap: 50px; }
+        .cert-grid { display: grid; grid-template-columns: 1fr; gap: 40px; }
 
+        /* --- CARTES DE CERTIFICATION --- */
         .cert-card {
             background: #fff;
             display: grid;
@@ -25,68 +43,57 @@
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0,0,0,0.05);
             border: 1px solid #eaeaea;
+            transition: 0.3s ease;
         }
+        .cert-card:hover { transform: translateY(-5px); border-color: #00d1ff; }
 
-        /* --- ZONE IMAGE ET SURVOL --- */
         .cert-image { 
-            background: #eee; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            overflow: hidden; 
-            cursor: pointer;
-            height: 100%;
+            background: #000; 
+            display: flex; align-items: center; justify-content: center; 
+            overflow: hidden; cursor: pointer; height: 100%;
         }
-        .cert-image img { 
-            width: 100%; 
-            height: 100%; 
-            object-fit: cover; 
-            transition: transform 0.5s ease; 
-        }
-        .cert-image:hover img { transform: scale(1.1); }
+        .cert-image img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; opacity: 0.9; }
+        .cert-image:hover img { transform: scale(1.05); opacity: 1; }
 
-        /* --- CONTENT STYLING --- */
-        .cert-info { padding: 40px; }
-        .cert-title { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: #001f3f; margin-bottom: 10px; }
-        .cert-org { font-weight: 600; color: #00d1ff; text-transform: uppercase; letter-spacing: 1px; font-size: 0.9rem; margin-bottom: 5px; display: block; }
-        .cert-date { font-style: italic; color: #888; margin-bottom: 15px; display: block; }
+        .cert-info { padding: 35px; }
+        .cert-title { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: #001f3f; margin-bottom: 10px; }
+        .cert-org { font-weight: 600; color: #00d1ff; text-transform: uppercase; letter-spacing: 1px; font-size: 0.85rem; display: block; }
+        .cert-date { font-style: italic; color: #888; margin-bottom: 15px; font-size: 0.9rem; display: block; }
         
-        .section-subtitle { font-weight: 600; font-size: 1rem; color: #001f3f; margin-top: 20px; margin-bottom: 10px; border-left: 4px solid #00d1ff; padding-left: 10px; }
-        .cert-desc { font-size: 0.95rem; color: #555; margin-bottom: 15px; text-align: justify; }
+        .section-subtitle { font-weight: 600; font-size: 0.95rem; color: #001f3f; margin-top: 20px; margin-bottom: 10px; border-left: 3px solid #00d1ff; padding-left: 10px; }
+        .cert-desc { font-size: 0.9rem; color: #555; text-align: justify; margin-bottom: 15px; }
         
-        .skills-list { list-style: none; display: grid; grid-template-columns: 1fr; gap: 8px; }
-        .skills-list li { font-size: 0.9rem; color: #444; padding-left: 20px; position: relative; }
-        .skills-list li::before { content: "✔"; position: absolute; left: 0; color: #00d1ff; font-weight: bold; }
-        .skills-list li strong { color: #001f3f; }
+        .skills-list { list-style: none; }
+        .skills-list li { font-size: 0.85rem; color: #444; margin-bottom: 6px; padding-left: 20px; position: relative; }
+        .skills-list li::before { content: "✓"; position: absolute; left: 0; color: #00d1ff; font-weight: bold; }
 
         /* --- MODAL (Lightbox) --- */
         .modal {
-            display: none; 
-            position: fixed;
-            z-index: 2000;
-            padding-top: 50px;
-            left: 0; top: 0;
-            width: 100%; height: 100%;
-            background-color: rgba(0,0,0,0.9);
+            display: none; position: fixed; z-index: 2000; padding-top: 50px;
+            left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.9);
         }
         .modal-content {
-            margin: auto;
-            display: block;
-            max-width: 85%;
-            max-height: 85%;
-            border: 3px solid #00d1ff;
-            border-radius: 10px;
+            margin: auto; display: block; max-width: 90%; max-height: 85vh;
+            border: 2px solid #00d1ff; border-radius: 8px;
         }
         .close-modal {
-            position: absolute;
-            top: 20px; right: 35px;
-            color: #fff;
-            font-size: 50px;
-            font-weight: bold;
-            cursor: pointer;
+            position: absolute; top: 20px; right: 30px; color: #fff; font-size: 40px; cursor: pointer;
         }
 
-        @media (max-width: 900px) { .cert-card { grid-template-columns: 1fr; } .cert-image { height: 250px; } }
+        /* --- ADAPTATION MOBILE --- */
+        @media (max-width: 900px) {
+            .grande-photo-banner { height: 280px; }
+            .main-name { font-size: 2rem; }
+            .banner-sub { font-size: 0.9rem; }
+            
+            nav { overflow-x: auto; white-space: nowrap; padding: 15px 10px; display: flex; justify-content: flex-start; }
+            nav a { margin: 0 10px; font-size: 0.75rem; flex-shrink: 0; }
+
+            .cert-card { grid-template-columns: 1fr; }
+            .cert-image { height: 220px; }
+            .cert-info { padding: 25px; }
+            .cert-title { font-size: 1.3rem; }
+        }
     </style>
 </head>
 <body>
@@ -94,6 +101,13 @@
     <div id="imageModal" class="modal">
         <span class="close-modal">&times;</span>
         <img class="modal-content" id="imgFull">
+    </div>
+
+    <div class="grande-photo-banner">
+        <div class="banner-content">
+            <h1 class="main-name">Certifications</h1>
+            <p class="banner-sub">PROFESSIONAL EXCELLENCE & EXPERTISE</p>
+        </div>
     </div>
 
     <nav>
@@ -111,100 +125,36 @@
 
             <div class="cert-card">
                 <div class="cert-image" onclick="openModal('Benevolat ONU.jpeg')">
-                    <img src="Benevolat ONU.jpeg" alt="Certification SMSI UIT">
+                    <img src="Benevolat ONU.jpeg" alt="WSIS Certification">
                 </div>
                 <div class="cert-info">
-                    <span class="cert-org">International Telecommunication Union (ITU) [cite: 39]</span>
-                    <h2 class="cert-title">Contribution to the World Summit on the Information Society (WSIS) [cite: 39]</h2>
-                    <span class="cert-date">November 15-18, 2005 [cite: 42]</span>
-                    
-                    <p class="cert-desc">This official UN agency certificate testifies to early engagement in global information governance[cite: 40]. Serving as an Assistant during the second phase of WSIS in Tunis, duties were performed with competence, tact, and strict adherence to international civil service standards[cite: 42].</p>
-                    
-                    <h3 class="section-subtitle">Acquired Soft Skills [cite: 43]</h3>
+                    <span class="cert-org">ITU (United Nations)</span>
+                    <h2 class="cert-title">World Summit on the Information Society (WSIS)</h2>
+                    <span class="cert-date">November 2005</span>
+                    <p class="cert-desc">Early engagement in global information governance. Serving during the WSIS in Tunis under international civil service standards.</p>
+                    <h3 class="section-subtitle">Acquired Skills</h3>
                     <ul class="skills-list">
-                        <li><strong>International Protocol:</strong> Ability to navigate high-level diplomatic environments and interact with international delegations[cite: 45].</li>
-                        <li><strong>Global Information Vision:</strong> Early immersion in "Information Society" debates, providing historical depth to current digital strategies[cite: 47].</li>
-                        <li><strong>Operational Rigor:</strong> Logistics and organizational support under intense global visibility and pressure[cite: 48].</li>
+                        <li>International Diplomacy & Protocol</li>
+                        <li>Global Media Governance Vision</li>
+                        <li>Operational Rigor under Pressure</li>
                     </ul>
                 </div>
             </div>
 
             <div class="cert-card">
                 <div class="cert-image" onclick="openModal('RFI actualité politique.jpeg')">
-                    <img src="RFI actualité politique.jpeg" alt="Certification RFI">
+                    <img src="RFI actualité politique.jpeg" alt="RFI Certification">
                 </div>
                 <div class="cert-info">
-                    <span class="cert-org">Radio France Internationale (RFI) & Monte Carlo Doualiya (MCD) [cite: 51]</span>
-                    <h2 class="cert-title">Professional Certification in Political Journalism & Media Debate [cite: 50]</h2>
-                    <span class="cert-date">April - May 2011 [cite: 51]</span>
-                    
-                    <p class="cert-desc">An intensive professional program focused on "Political News Coverage: Reporting and Debate"[cite: 53]. Conducted in Tunis during a pivotal historical period, it emphasized international broadcast standards[cite: 54].</p>
-                    
-                    <h3 class="section-subtitle">Core Competencies Validated [cite: 55]</h3>
+                    <span class="cert-org">RFI & Monte Carlo Doualiya</span>
+                    <h2 class="cert-title">Political Journalism & Media Debate</h2>
+                    <span class="cert-date">April - May 2011</span>
+                    <p class="cert-desc">Intensive program focused on reporting and debate moderation during the pivotal "Tunisian Revolution" period.</p>
+                    <h3 class="section-subtitle">Core Competencies</h3>
                     <ul class="skills-list">
-                        <li><strong>Advanced Political Reporting:</strong> Mastery of field reporting on sensitive socio-political issues with neutrality[cite: 56].</li>
-                        <li><strong>Editorial Leadership:</strong> Skills to moderate balanced political debates ensuring fair representation[cite: 57].</li>
-                        <li><strong>Crisis Communication:</strong> Experience managing news flow during critical periods of political change[cite: 59].</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="cert-card">
-                <div class="cert-image" onclick="openModal('DCAF.jpeg')">
-                    <img src="DCAF.jpeg" alt="Certification DCAF">
-                </div>
-                <div class="cert-info">
-                    <span class="cert-org">Geneva Centre for Security Sector Governance (DCAF) [cite: 61]</span>
-                    <h2 class="cert-title">Specialist Certification in Judicial & Legal Information Dissemination [cite: 60]</h2>
-                    <span class="cert-date">October - November 2018 [cite: 61]</span>
-                    
-                    <p class="cert-desc">Validates advanced training in popularizing legal and judicial information[cite: 63]. Focused on the media's role in translating complex legal proceedings into accurate public information[cite: 64].</p>
-                    
-                    <h3 class="section-subtitle">Core Competencies Validated [cite: 65]</h3>
-                    <ul class="skills-list">
-                        <li><strong>Legal Popularization:</strong> Expertise in simplifying intricate judicial terminology without losing technical accuracy[cite: 66, 67].</li>
-                        <li><strong>Regulatory Compliance:</strong> Reporting skills within legal frameworks essential for work with bodies like HAICA and ISIE[cite: 69].</li>
-                        <li><strong>Ethical Reporting:</strong> Proficiency in handling sensitive information related to state security and the judiciary[cite: 70].</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="cert-card">
-                <div class="cert-image" onclick="openModal('radio numérique.jpeg')">
-                    <img src="radio numérique.jpeg" alt="Radio Numérique">
-                </div>
-                <div class="cert-info">
-                    <span class="cert-org">CAPJC (Tunisian Prime Minister's Office) [cite: 72, 75]</span>
-                    <h2 class="cert-title">Professional Certification in Digital Radio Journalism [cite: 71]</h2>
-                    <span class="cert-date">May 14-18, 2007 [cite: 72]</span>
-                    
-                    <p class="cert-desc">Certifies successful completion of advanced training in "Journalisme Radio Numérique"[cite: 74]. Represents early mastery of digital broadcasting tools and production workflows[cite: 75].</p>
-                    
-                    <h3 class="section-subtitle">Core Competencies Validated [cite: 76]</h3>
-                    <ul class="skills-list">
-                        <li><strong>Digital Audio Workflow:</strong> Expertise in transitioning from analog to digital production (recording, editing, broadcasting)[cite: 77].</li>
-                        <li><strong>Modern Newsroom Integration:</strong> Adoption of digital technologies to streamline news delivery[cite: 78].</li>
-                        <li><strong>Innovation Adaptability:</strong> Ability to stay ahead of industry trends, moving to digital-first methodologies[cite: 80].</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="cert-card">
-                <div class="cert-image" onclick="openModal('redaction radio.jpeg')">
-                    <img src="redaction radio.jpeg" alt="Rédaction Radio">
-                </div>
-                <div class="cert-info">
-                    <span class="cert-org">CAPJC & Ministry of Communication [cite: 83, 85]</span>
-                    <h2 class="cert-title">Professional Certification in Radio News Writing & Presentation [cite: 82]</h2>
-                    <span class="cert-date">February 08-13, 2010 [cite: 83]</span>
-                    
-                    <p class="cert-desc">Validates specialized training in "La rédaction de l'information présentée à la radio"[cite: 85]. Focused on transforming complex data into clear, concise scripts for oral delivery[cite: 86].</p>
-                    
-                    <h3 class="section-subtitle">Core Competencies Validated [cite: 87]</h3>
-                    <ul class="skills-list">
-                        <li><strong>Radio Scriptwriting:</strong> Mastery of syntax and rhythm ensuring information is easily understood by listeners[cite: 89].</li>
-                        <li><strong>Editorial Synthesis:</strong> Ability to condense complex events into brief news bulletins[cite: 90].</li>
-                        <li><strong>Technical Presentation:</strong> Live broadcasting preparation focusing on professional delivery standards[cite: 92].</li>
+                        <li>Mastery of Neutral Political Reporting</li>
+                        <li>High-level Debate Moderation</li>
+                        <li>Crisis Communication Management</li>
                     </ul>
                 </div>
             </div>
@@ -214,30 +164,34 @@
                     <img src="Data journalism.jpeg" alt="Data Journalism">
                 </div>
                 <div class="cert-info">
-                    <span class="cert-org">European Union, DW Akademie & CAPJC [cite: 95]</span>
-                    <h2 class="cert-title">Advanced Training in Data Journalism Fundamentals [cite: 94]</h2>
-                    <span class="cert-date">February 2019 [cite: 95]</span>
-                    
-                    <p class="cert-desc">A production-based certificate validating proficiency in the foundations of data journalism[cite: 97]. Focused on practical application of tools to create evidence-based news stories[cite: 98].</p>
-                    
-                    <h3 class="section-subtitle">Core Competencies Validated [cite: 100]</h3>
+                    <span class="cert-org">European Union & DW Akademie</span>
+                    <h2 class="cert-title">Advanced Data Journalism Fundamentals</h2>
+                    <span class="cert-date">February 2019</span>
+                    <p class="cert-desc">Production-based certificate for evidence-based news storytelling using modern analytical tools.</p>
+                    <h3 class="section-subtitle">Core Competencies</h3>
                     <ul class="skills-list">
-                        <li><strong>Data Interpretation:</strong> Skills in identifying, cleaning, and extracting insights from complex datasets[cite: 101].</li>
-                        <li><strong>Information Visualization:</strong> Ability to transform raw data into impactful graphics for digital audiences[cite: 102].</li>
-                        <li><strong>Digital Innovation:</strong> Integration of modern analytical tools into newsroom workflows[cite: 104].</li>
+                        <li>Data Interpretation & Extraction</li>
+                        <li>Advanced Information Visualization</li>
+                        <li>Digital Newsroom Workflow Innovation</li>
                     </ul>
                 </div>
             </div>
 
             <div class="cert-card">
                 <div class="cert-image" onclick="openModal('AI and Combating Fake News.jpg')">
-                    <img src="AI and Combating Fake News.jpg" alt="AI Certification">
+                    <img src="AI and Combating Fake News.jpg" alt="AI Journalism">
                 </div>
                 <div class="cert-info">
                     <span class="cert-org">ASBU & EBU Academy</span>
                     <h2 class="cert-title">Artificial Intelligence in Journalism</h2>
                     <span class="cert-date">2023 - 2024</span>
-                    <p class="cert-desc">Focused on the integration of AI tools for fact-checking, automated news verification, and enhancing editorial quality in modern newsrooms.</p>
+                    <p class="cert-desc">Integration of AI tools for news verification and combating misinformation in digital media.</p>
+                    <h3 class="section-subtitle">Key Areas</h3>
+                    <ul class="skills-list">
+                        <li>Automated News Verification (Fact-checking)</li>
+                        <li>AI-driven Editorial Quality</li>
+                        <li>Future Media Technology Integration</li>
+                    </ul>
                 </div>
             </div>
 
@@ -245,19 +199,27 @@
     </main>
 
     <script>
+        var modal = document.getElementById("imageModal");
+        var modalImg = document.getElementById("imgFull");
+
         function openModal(imgSrc) {
-            var modal = document.getElementById("imageModal");
-            var modalImg = document.getElementById("imgFull");
             modal.style.display = "block";
             modalImg.src = imgSrc;
+            document.body.style.overflow = "hidden";
         }
+
         document.querySelector(".close-modal").onclick = function() {
-            document.getElementById("imageModal").style.display = "none";
+            modal.style.display = "none";
+            document.body.style.overflow = "auto";
         }
+
         window.onclick = function(event) {
-            var modal = document.getElementById("imageModal");
-            if (event.target == modal) { modal.style.display = "none"; }
+            if (event.target == modal) {
+                modal.style.display = "none";
+                document.body.style.overflow = "auto";
+            }
         }
     </script>
+
 </body>
 </html>
