@@ -8,7 +8,7 @@
     <style>
         /* --- RESET & STYLE DE BASE --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Montserrat', sans-serif; background-color: #fff; color: #333; line-height: 1.8; overflow-x: hidden; }
+        body { font-family: 'Montserrat', sans-serif; background-color: #fff; color: #333; line-height: 1.6; overflow-x: hidden; }
 
         /* --- BANNIÈRE UNIFIÉE --- */
         .grande-photo-banner {
@@ -35,124 +35,48 @@
         nav a:hover { color: #00d1ff; }
 
         /* --- CONTENU BIOGRAPHIE --- */
-        .bio-container { max-width: 900px; margin: 60px auto; padding: 0 25px; }
+        .bio-container { max-width: 1000px; margin: 60px auto; padding: 0 25px; }
 
-        .main-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            color: #001f3f;
-            text-align: center;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-        }
+        /* HEADER SECTION */
+        .cv-header { border-bottom: 4px solid #001f3f; padding-bottom: 20px; margin-bottom: 40px; }
+        .cv-name { font-family: 'Playfair Display', serif; font-size: 3rem; color: #001f3f; text-transform: uppercase; line-height: 1; }
+        .cv-title { font-size: 1.4rem; color: #c5a059; font-weight: 700; margin-top: 10px; text-transform: uppercase; }
+        .contact-info { margin-top: 15px; font-size: 0.9rem; color: #666; font-weight: 600; }
 
-        .sub-main-title {
-            font-size: 1rem;
-            color: #c5a059;
-            text-align: center;
-            font-weight: 700;
-            letter-spacing: 3px;
-            margin-bottom: 40px;
-            display: block;
-            text-transform: uppercase;
-        }
+        /* ABOUT SECTION */
+        .section-title-main { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: #001f3f; text-transform: uppercase; margin-bottom: 20px; border-left: 5px solid #00d1ff; padding-left: 15px; }
+        .about-content { font-size: 1.1rem; text-align: justify; margin-bottom: 40px; color: #444; }
 
-        .intro-text {
-            font-size: 1.15rem;
-            font-style: italic;
-            color: #555;
-            border-left: 5px solid #00d1ff;
-            padding-left: 25px;
-            margin-bottom: 60px;
-            text-align: justify;
-        }
+        /* TABLE SKILLS */
+        .skills-table { width: 100%; border-collapse: collapse; margin-bottom: 50px; background: #f9f9f9; }
+        .skills-table th { background: #001f3f; color: #fff; text-align: left; padding: 15px; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px; border: 1px solid #ddd; }
+        .skills-table td { padding: 15px; border: 1px solid #ddd; vertical-align: top; font-size: 0.9rem; }
+        .skills-table td strong { color: #001f3f; display: block; margin-top: 8px; }
 
-        /* --- SECTIONS CHRONOLOGIQUES --- */
-        .bio-section { margin-bottom: 60px; }
+        /* EXPERIENCE SECTIONS */
+        .exp-item { margin-bottom: 35px; }
+        .exp-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; border-bottom: 1px solid #eee; padding-bottom: 5px; }
+        .exp-job { font-weight: 700; color: #001f3f; font-size: 1.2rem; }
+        .exp-date { font-weight: 700; color: #00d1ff; font-family: monospace; }
+        .exp-company { font-style: italic; font-weight: 600; color: #c5a059; margin-bottom: 10px; display: block; }
+        .exp-list { list-style: none; padding-left: 20px; }
+        .exp-list li { position: relative; margin-bottom: 10px; font-size: 0.95rem; text-align: justify; }
+        .exp-list li::before { content: "•"; position: absolute; left: -20px; color: #00d1ff; font-weight: bold; }
 
-        .section-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 25px;
-            border-bottom: 2px solid #f0f0f0;
-            padding-bottom: 10px;
-        }
+        /* FORMATION & LANGUAGES */
+        .other-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 40px; margin-top: 40px; }
+        .cert-item { margin-bottom: 20px; padding-left: 15px; border-left: 2px solid #c5a059; }
+        .cert-title { font-weight: 700; color: #333; }
+        .lang-list { list-style: none; }
+        .lang-list li { margin-bottom: 8px; font-weight: 600; }
+        .lang-list span { color: #00d1ff; }
 
-        .section-header h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.6rem;
-            color: #001f3f;
-        }
-
-        .section-header .years {
-            background: #001f3f;
-            color: #fff;
-            padding: 5px 15px;
-            font-size: 0.85rem;
-            border-radius: 4px;
-            margin-right: 20px;
-            font-weight: 600;
-            white-space: nowrap;
-        }
-
-        h3.focus-title {
-            color: #003366;
-            font-size: 1rem;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            line-height: 1.5;
-        }
-
-        .bio-list { list-style: none; margin-bottom: 30px; }
-        .bio-list li { margin-bottom: 18px; position: relative; padding-left: 30px; font-size: 0.95rem; }
-        .bio-list li::before {
-            content: "◆";
-            position: absolute;
-            left: 0;
-            color: #00d1ff;
-            font-size: 0.8rem;
-            top: 2px;
-        }
-
-        .list-title { font-weight: 700; color: #333; display: block; margin-bottom: 5px; }
-
-        /* --- SKILLS GRID --- */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-            background: #f9f9f9;
-            padding: 35px;
-            border-radius: 12px;
-            border: 1px solid #eee;
-        }
-
-        .skill-item h4 {
-            font-family: 'Playfair Display', serif;
-            color: #001f3f;
-            margin-bottom: 12px;
-            border-bottom: 2px solid #c5a059;
-            display: inline-block;
-            font-size: 1.1rem;
-        }
-
-        .skill-item p { font-size: 0.9rem; color: #555; line-height: 1.6; }
-
-        /* --- RESPONSIVE --- */
+        /* RESPONSIVE */
         @media (max-width: 768px) {
-            .grande-photo-banner { height: 300px; }
-            .main-name { font-size: 2.2rem; }
-            .main-title { font-size: 1.8rem; }
-            
-            nav { overflow-x: auto; white-space: nowrap; padding: 15px 10px; display: flex; justify-content: flex-start; }
-            nav a { margin: 0 10px; font-size: 0.75rem; flex-shrink: 0; }
-
-            .section-header { flex-direction: column; align-items: flex-start; }
-            .section-header .years { margin-bottom: 10px; }
-            .section-header h2 { font-size: 1.3rem; }
-            
-            .intro-text { font-size: 1rem; padding-left: 15px; }
+            .cv-name { font-size: 2.2rem; }
+            .exp-header { flex-direction: column; }
+            .other-grid { grid-template-columns: 1fr; }
+            .skills-table { display: block; overflow-x: auto; }
         }
     </style>
 </head>
@@ -161,7 +85,7 @@
     <div class="grande-photo-banner">
         <div class="banner-content">
             <h1 class="main-name">Meher Ferchichi</h1>
-            <p class="journalist-line">Digital Content Strategist</p>
+            <p class="journalist-line">Biography & Portfolio</p>
         </div>
     </div>
 
@@ -176,95 +100,145 @@
     </nav>
 
     <div class="bio-container">
-        <h1 class="main-title">Professional Biography</h1>
-        <span class="sub-main-title">Digital Content Strategist | Media Governance Expert</span>
-
-        <p class="intro-text">
-            Meher Ferchichi is a seasoned media professional and digital strategist with a career spanning over two decades. From field reporting to executive digital leadership, he has consistently bridged the gap between traditional journalism and modern technological innovation.
-        </p>
+        
+        <header class="cv-header">
+            <h1 class="cv-name">Meher Ferchichi</h1>
+            <p class="cv-title">Digital Content Strategist & Media Governance Expert</p>
+            <div class="contact-info">
+                <span>📞 00216 50 124 836</span> | 
+                <span>✉️ meher.radio.tun@gmail.com</span> | 
+                <span>🔗 linkedin.com/in/meherferchichi</span>
+            </div>
+        </header>
 
         <section class="bio-section">
-            <div class="section-header">
-                <span class="years">2023 – Present</span>
-                <h2>Executive Leadership & Digital Transformation</h2>
+            <h2 class="section-title-main">À PROPOS</h2>
+            <div class="about-content">
+                Digital Content Strategist & Media Governance Expert with 20+ years of comprehensive experience across the media ecosystem. A proven Editorial Leader who has successfully driven Digital Transformation initiatives while ensuring strict Media Regulatory Compliance (Media Law). Proficient in Mobile Journalism (MoJo) and Fact-Checking, seeking to leverage dual expertise in content quality and media innovation within a forward-thinking international organization or a major global media entity.
             </div>
-            <h3 class="focus-title">Digital Content Strategy Manager & Media Trainer for Radio Tunisienne.</h3>
-            
-            <ul class="bio-list">
-                <li>
-                    <span class="list-title">Infrastructure Modernization:</span>
-                    Leading project management and CMS administration for Radio Tunisienne’s new suite of digital platforms.
-                </li>
-                <li>
-                    <span class="list-title">Innovation in Production:</span>
-                    Implementing Mobile Journalism (MoJo) training to empower editorial teams for digital-first content.
-                </li>
-                <li>
-                    <span class="list-title">Emerging Technologies:</span>
-                    Pioneering AI integration for news verification, certified by ASBU and EBU Academy.
-                </li>
-            </ul>
         </section>
 
         <section class="bio-section">
-            <div class="section-header">
-                <span class="years">2010 – 2023</span>
-                <h2>Regulatory Coordination & Senior Management</h2>
-            </div>
-            <h3 class="focus-title">Senior News Editor & Media Regulatory Coordinator.</h3>
-
-            <ul class="bio-list">
-                <li>
-                    <span class="list-title">Compliance & Governance:</span>
-                    Liaison for national regulatory bodies (HAICA, ISIE), ensuring ethical standards during critical National Elections.
-                </li>
-                <li>
-                    <span class="list-title">Global Event Orchestration:</span>
-                    Directed live editorial execution for high-profile events, including the 2019 Arab Summit.
-                </li>
-            </ul>
+            <h2 class="section-title-main">COMPÉTENCES</h2>
+            <table class="skills-table">
+                <thead>
+                    <tr>
+                        <th>Strategy & Digital</th>
+                        <th>Compliance & Governance</th>
+                        <th>Media & Leadership</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            Digital Content Strategy<br>
+                            Mobile Journalism (MoJo)<br>
+                            <strong>SEO & Web Development Oversight</strong><br>
+                            Data Journalism & Analysis
+                        </td>
+                        <td>
+                            Media Regulatory Compliance<br>
+                            Fact-Checking & Verification<br>
+                            <strong>Media Ethics & Governance</strong><br>
+                            Electoral Monitoring
+                        </td>
+                        <td>
+                            Editorial Leadership<br>
+                            Live Broadcasting<br>
+                            <strong>Project Management</strong><br>
+                            Training & Development
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </section>
 
         <section class="bio-section">
-            <div class="section-header">
-                <span class="years">2006 – 2010</span>
-                <h2>Journalism & Field Reporting</h2>
-            </div>
-            <h3 class="focus-title">Foundations in newsgathering and live broadcasting.</h3>
+            <h2 class="section-title-main">EXPÉRIENCES PROFESSIONNELLES</h2>
 
-            <ul class="bio-list">
-                <li>
-                    <span class="list-title">News Anchor:</span>
-                    Extensive experience managing real-time information flow during live national broadcasts.
-                </li>
-                <li>
-                    <span class="list-title">In-depth Investigations:</span>
-                    Field reporting on socio-economic affairs, refining analytical and scriptwriting capabilities.
-                </li>
-            </ul>
-        </section>
-
-        <section class="bio-section">
-            <div class="section-header">
-                <h2>Education & Core Competencies</h2>
-            </div>
-            
-            <div class="skills-grid">
-                <div class="skill-item">
-                    <h4>Academic</h4>
-                    <p>Master’s Degree in Journalism and Information Science from IPSI (2005). Former ITU Assistant for the World Summit on the Information Society (WSIS).</p>
+            <div class="exp-item">
+                <div class="exp-header">
+                    <span class="exp-job">Digital Content Strategy Manager & Media Trainer</span>
+                    <span class="exp-date">2023 - Present</span>
                 </div>
-                <div class="skill-item">
-                    <h4>Certifications</h4>
-                    <p>Media Law (DCAF Geneva), Fact-Checking & Data Journalism (Deutsche Welle), and AI in Journalism (EBU Academy).</p>
+                <span class="exp-company">Radio Tunisienne | Tunis, Tunisia</span>
+                <ul class="exp-list">
+                    <li>Directed the organization's digital transition by designing and implementing a comprehensive, cross-platform Digital Content Strategy.</li>
+                    <li>Trained editorial teams on Mobile Journalism (MoJo) techniques and best practices for optimized digital content production.</li>
+                    <li>Oversaw the development and optimization of web platforms, successfully expanding the group's digital footprint.</li>
+                    <li>Ensured that all digital content maintained strict adherence to media ethics and organizational compliance standards.</li>
+                </ul>
+            </div>
+
+            <div class="exp-item">
+                <div class="exp-header">
+                    <span class="exp-job">Senior News Editor & Media Regulatory Coordinator</span>
+                    <span class="exp-date">2010 - 2023</span>
                 </div>
-                <div class="skill-item">
-                    <h4>Technical Skills</h4>
-                    <p><strong>Languages:</strong> Arabic, French, English.<br>
-                    <strong>Tools:</strong> CMS Administration, SEO, AI Verification, Digital Project Management.</p>
+                <span class="exp-company">Radio Tunisienne | Tunis, Tunisia</span>
+                <ul class="exp-list">
+                    <li>Coordinated the senior editorial team, maintaining editorial control, quality assurance, and ethical standards across broadcasts.</li>
+                    <li>Managed strict Media Regulatory Compliance with national bodies (HAICA, ISIE), particularly during critical Electoral Monitoring periods.</li>
+                    <li>Authored detailed compliance reports and enforced rigorous standards to ensure fair and balanced media coverage.</li>
+                    <li>Orchestrated live coverage for high-profile national and international events, including the 2019 Arab Summit.</li>
+                </ul>
+            </div>
+
+            <div class="exp-item">
+                <div class="exp-header">
+                    <span class="exp-job">Journalist, Reporter & News Anchor</span>
+                    <span class="exp-date">2006 - 2010</span>
                 </div>
+                <span class="exp-company">Radio Tunisienne | Tunis, Tunisia</span>
+                <ul class="exp-list">
+                    <li>Presented live news broadcasts and flashes (Live Broadcasting), demonstrating exceptional proficiency in real-time information management.</li>
+                    <li>Conducted field reporting and in-depth interviews, focusing on political and socio-economic affairs.</li>
+                    <li>Developed advanced Scriptwriting and analytical skills essential for accurate and compelling news delivery.</li>
+                </ul>
             </div>
         </section>
+
+        <div class="other-grid">
+            <section>
+                <h2 class="section-title-main">FORMATION & CERTIFICATIONS</h2>
+                
+                <div class="exp-item" style="margin-bottom: 20px;">
+                    <p><strong>Master's Degree in Journalism and Information Science</strong></p>
+                    <p>IPSI | Tunis, Tunisia (2001-2005)</p>
+                    <p style="font-size: 0.85rem; color: #666;">Key Coursework: Media Law, Investigative Reporting, Media Ethics, Mass Communication.</p>
+                </div>
+
+                <div class="cert-item">
+                    <span class="cert-title">Artificial Intelligence in News Quality Service</span><br>
+                    ASBU & EBU Academy (2023)
+                </div>
+                <div class="cert-item">
+                    <span class="cert-title">Verification of Digital News / Fact-Checking</span><br>
+                    ASBU & EBU Academy (2020)
+                </div>
+                <div class="cert-item">
+                    <span class="cert-title">Foundations of Data Journalism</span><br>
+                    European Union / Deutsche Welle (2019)
+                </div>
+                <div class="cert-item">
+                    <span class="cert-title">Media Law & Regulatory Compliance</span><br>
+                    DCAF (Geneva Centre) (2018)
+                </div>
+
+                <h2 class="section-title-main" style="margin-top: 30px;">VOLUNTEER EXPERIENCE</h2>
+                <p style="font-size: 0.95rem;"><strong>Summit Assistant (Volunteer)</strong> - ITU (UN Agency) - WSIS Tunis (2005)</p>
+            </section>
+
+            <section>
+                <h2 class="section-title-main">LANGUAGES</h2>
+                <ul class="lang-list">
+                    <li>Arabic: <span>Native</span></li>
+                    <li>French: <span>Full Professional</span></li>
+                    <li>English: <span>Advanced Working</span></li>
+                </ul>
+            </section>
+        </div>
+
     </div>
 
 </body>
