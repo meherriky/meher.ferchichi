@@ -1,97 +1,176 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MEHER FERCHICHI - Grande Photo</title>
+    <title>CONTACT | MEHER FERCHICHI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Playfair+Display:ital,wght@1,900&display=swap" rel="stylesheet">
     <style>
-        /* --- RESET BASE (Pour éviter les bugs) --- */
+        :root {
+            --primary: #00d1ff;
+            --dark: #001f3f;
+            --glass: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background-color: #f0f2f5; /* Fond clair pour faire ressortir le flou blanc */
-            color: #333;
-            line-height: 1.6;
+        body { 
+            font-family: 'Montserrat', sans-serif; 
+            background: radial-gradient(circle at top right, #001f3f, #000); 
+            color: #fff; 
+            min-height: 100vh;
         }
 
-        /* --- LE GRAND BANDEAU AVEC LA GRANDE PHOTO --- */
-        .grande-photo-banner {
-            width: 100%;
-            height: 400px; /* Hauteur de la grande photo */
-            
-            /* --- 1. AJOUTEZ VOTRE PHOTO ICI --- */
-            background-image: url('image profil.png'); /* NOM DE VOTRE FICHIER IMAGE */
-            
-            /* Configuration de l'image */
-            background-size: cover; /* Couvre tout l'espace */
-            background-position: center; /* Centre l'image */
-            background-repeat: no-repeat;
-            
-            /* --- 2. L'EFFET DE CONTOURS FLOUS BLANCS --- */
-            /* Une ombre interne blanche très large et floue */
-            box-shadow: inset 0 0 80px 40px rgba(255, 255, 255, 1); 
-            
-            /* Ajout d'un masque de bordure pour adoucir encore plus */
-            -webkit-mask-image: radial-gradient(circle, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
-            mask-image: radial-gradient(circle, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
+        /* NAVIGATION - On garde la structure pour la cohérence */
+        nav { 
+            background: rgba(0,0,0,0.8); padding: 20px; text-align: center; 
+            position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid var(--primary); 
+            backdrop-filter: blur(10px);
+        }
+        nav a { color: rgba(255, 255, 255, 0.5); text-decoration: none; margin: 0 15px; font-weight: bold; font-size: 0.8rem; letter-spacing: 2px; transition: 0.3s; }
+        nav a.active { color: var(--primary); text-shadow: 0 0 10px var(--primary); }
 
-            /* Alignement du texte au centre */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: white; /* Texte en blanc sur la photo */
-            text-align: center;
+        /* CONTACT SECTION - STYLE FUTURISTE */
+        .contact-wrapper {
+            max-width: 900px; margin: 80px auto; padding: 0 20px;
+            animation: fadeIn 1.5s ease;
         }
 
-        /* --- TEXTE SUR LA PHOTO --- */
-        .nom-famille {
-            font-size: 3.5rem;
-            font-weight: bold;
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.5); /* Ombre pour la lisibilité */
-            margin: 0;
+        .glass-card {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            border-radius: 30px;
+            padding: 60px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+            position: relative;
+            overflow: hidden;
         }
 
-        .profession {
-            font-size: 1.5rem;
+        /* Décoration futuriste (cercles de lumière) */
+        .glass-card::before {
+            content: ""; position: absolute; top: -50px; right: -50px;
+            width: 150px; height: 150px; background: var(--primary);
+            filter: blur(100px); opacity: 0.2;
+        }
+
+        .contact-header { text-align: center; margin-bottom: 50px; }
+        .contact-header h2 { 
+            font-family: 'Playfair Display', serif; font-size: 3rem; 
+            letter-spacing: -1px; margin-bottom: 10px; 
+        }
+        .contact-header p { color: var(--primary); text-transform: uppercase; letter-spacing: 4px; font-size: 0.75rem; font-weight: 700; }
+
+        /* FORMULAIRE DESIGN */
+        .input-group { position: relative; margin-bottom: 40px; }
+        
+        .input-group input, .input-group textarea {
+            width: 100%; background: transparent; border: none;
+            border-bottom: 2px solid var(--border);
+            padding: 15px 0; color: #fff; font-size: 1.1rem;
+            transition: 0.4s; font-family: 'Montserrat', sans-serif;
+        }
+
+        .input-group label {
+            position: absolute; top: 15px; left: 0;
+            color: rgba(255,255,255,0.4); pointer-events: none;
+            transition: 0.4s; text-transform: uppercase; font-size: 0.8rem; font-weight: 700;
+        }
+
+        /* Animation quand on clique (focus) */
+        .input-group input:focus ~ label,
+        .input-group input:valid ~ label,
+        .input-group textarea:focus ~ label,
+        .input-group textarea:valid ~ label {
+            top: -20px; font-size: 0.7rem; color: var(--primary);
+        }
+
+        .input-group input:focus, .input-group textarea:focus {
+            outline: none; border-bottom: 2px solid var(--primary);
+            box-shadow: 0 1px 0 var(--primary);
+        }
+
+        textarea { min-height: 120px; }
+
+        /* BOUTON ULTRA-MODERNE */
+        .btn-container { text-align: center; margin-top: 20px; }
+        
+        .futuristic-btn {
+            background: transparent;
+            color: #fff;
+            border: 1px solid var(--primary);
+            padding: 20px 60px;
+            font-size: 0.9rem;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 5px;
-            text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
-            margin-top: 10px;
-        }
-
-        /* --- NAVIGATION --- */
-        nav {
-            background-color: #333;
-            padding: 15px;
-            text-align: center;
-        }
-        nav a {
-            color: white;
+            letter-spacing: 4px;
+            cursor: pointer;
+            border-radius: 50px;
+            position: relative;
+            transition: 0.5s;
+            overflow: hidden;
             text-decoration: none;
-            margin: 0 15px;
-            font-weight: bold;
-        }
-        nav a:hover {
-            color: #ccc;
+            display: inline-block;
         }
 
-        /* --- CONTENU --- */
-        .main-container {
-            max-width: 1000px;
-            margin: 40px auto;
-            padding: 20px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        .futuristic-btn:hover {
+            background: var(--primary);
+            color: #000;
+            box-shadow: 0 0 40px rgba(0, 209, 255, 0.6);
+            transform: scale(1.05);
         }
 
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            .glass-card { padding: 30px; }
+            .contact-header h2 { font-size: 2rem; }
+        }
     </style>
 </head>
 <body>
 
-    <div class="grande-photo-banner">
-        <h1 class="nom-famille">    MEHER FERCHICHI</h1>
-        <p class="profession">  DIGITAL CONTENT STRATEGIST</p>
+    <nav>
+        <a href="index.html">HOME</a>
+        <a href="categorie-a.html">BIOGRAPHY</a>
+        <a href="categorie-b.html">CERTIFICATES</a>
+        <a href="categorie-c.html">ALBUM</a>
+        <a href="categorie-d.html">AUDIO PRODUCTION</a>
+        <a href="categorie-e.html">VIDEO PRODUCTION</a>
+        <a href="categorie-f.html">AI VIDEO PRODUCTION</a>
+        <a href="categorie-g.html" class="active">CONTACT</a>
+    </nav>
+
+    <div class="contact-wrapper">
+        <div class="glass-card">
+            <div class="contact-header">
+                <p>Establishing Connection</p>
+                <h2>Contact.</h2>
+            </div>
+
+            <form action="mailto:meher.radio.tun@gmail.com" method="post" enctype="text/plain">
+                <div class="input-group">
+                    <input type="text" name="subject" required>
+                    <label>Subject / Objet</label>
+                </div>
+
+                <div class="input-group">
+                    <textarea name="body" required></textarea>
+                    <label>Your Message</label>
+                </div>
+
+                <div class="btn-container">
+                    <button type="submit" class="futuristic-btn">
+                        Initialize Transfer
+                    </button>
+                </div>
+            </form>
+        </div>
     </div>
+
+</body>
+</html>
