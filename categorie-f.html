@@ -10,7 +10,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Montserrat', sans-serif; background-color: #f4f7f9; color: #333; line-height: 1.6; overflow-x: hidden; }
 
-        /* --- STYLE DE LA BANNIÈRE --- */
+        /* --- STYLE DE LA BANNIÈRE (RESPONSIVE) --- */
         .grande-photo-banner {
             width: 100%; height: 400px;
             background: #001f3f url('image profil.png') center/cover no-repeat;
@@ -21,13 +21,21 @@
             content: ""; position: absolute; top:0; left:0; width:100%; height:100%; 
             background: rgba(0,0,0,0.5); 
         }
-        .banner-content { position: relative; z-index: 2; color: white; }
+        .banner-content { position: relative; z-index: 2; color: white; padding: 0 20px; }
         .main-name { font-size: 3.5rem; letter-spacing: 8px; text-transform: uppercase; margin-bottom: 10px; font-family: 'Playfair Display', serif; }
         .journalist-line { font-style: italic; font-size: 1.8rem; color: #00d1ff; margin-bottom: 8px; }
         .strategist-line { font-weight: bold; font-size: 1.1rem; color: #ffd700; letter-spacing: 4px; text-transform: uppercase; }
 
-        /* --- NAVIGATION --- */
-        nav { background: #1a1a1a; padding: 20px; text-align: center; position: sticky; top: 0; z-index: 1000; border-bottom: 2px solid #00d1ff; }
+        /* --- NAVIGATION (SCROLLABLE SUR MOBILE) --- */
+        nav { 
+            background: #1a1a1a; 
+            padding: 20px; 
+            text-align: center; 
+            position: sticky; 
+            top: 0; 
+            z-index: 1000; 
+            border-bottom: 2px solid #00d1ff; 
+        }
         nav a { color: rgba(255, 255, 255, 0.6); text-decoration: none; margin: 0 15px; font-weight: bold; transition: 0.3s; font-size: 0.85rem; }
         nav a.active { color: #00d1ff; border-bottom: 2px solid #00d1ff; padding-bottom: 5px; }
 
@@ -50,7 +58,7 @@
             100% { opacity: 1; }
         }
 
-        /* --- CONTENU --- */
+        /* --- CONTENU PRINCIPAL --- */
         .main-container { max-width: 1200px; margin: 0 auto; padding: 60px 20px; }
         h2.section-title { 
             font-size: 2rem; 
@@ -62,8 +70,12 @@
             padding-left: 15px;
         }
 
-        /* --- GRILLE AI --- */
-        .ai-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(480px, 1fr)); gap: 40px; }
+        /* --- GRILLE AI (FLEXIBLE) --- */
+        .ai-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+            gap: 40px; 
+        }
         .ai-card { background: #ffffff; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.08); border: 1px solid #eaeaea; transition: 0.3s ease; }
         .ai-card:hover { transform: translateY(-10px); border-color: #00d1ff; box-shadow: 0 15px 40px rgba(0, 209, 255, 0.15); }
         .video-wrapper video { width: 100%; display: block; background: #000; height: 300px; object-fit: cover; }
@@ -85,7 +97,23 @@
         .vid-title { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: #001f3f; margin-bottom: 12px; display: block; font-weight: 700; line-height: 1.2; }
         .vid-description { font-size: 0.95rem; color: #555; text-align: justify; line-height: 1.7; }
 
-        @media (max-width: 850px) { .ai-grid { grid-template-columns: 1fr; } .main-name { font-size: 2.2rem; } .video-wrapper video { height: 220px; } }
+        /* --- ADAPTATION MOBILE (MEDIA QUERIES) --- */
+        @media (max-width: 768px) {
+            .grande-photo-banner { height: 280px; }
+            .main-name { font-size: 1.8rem; letter-spacing: 3px; }
+            .journalist-line { font-size: 1.2rem; }
+            .strategist-line { font-size: 0.75rem; letter-spacing: 2px; }
+            
+            nav { overflow-x: auto; white-space: nowrap; padding: 15px 10px; display: flex; justify-content: flex-start; }
+            nav a { margin: 0 10px; font-size: 0.75rem; flex-shrink: 0; }
+            
+            .main-container { padding: 30px 15px; }
+            h2.section-title { font-size: 1.4rem; }
+            .video-wrapper video { height: 220px; }
+            .ai-grid { grid-template-columns: 1fr; gap: 25px; }
+            .ai-info { padding: 20px; }
+            .vid-title { font-size: 1.3rem; }
+        }
     </style>
 </head>
 <body>
